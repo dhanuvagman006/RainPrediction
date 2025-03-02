@@ -32,4 +32,6 @@ from sklearn.metrics import classification_report, confusion_matrix, accuracy_sc
 import pickle  
 ```
 
-<!-- Amshu start from here and explain what happens the above code here -->
+<!-- Amshu start from here and explain what happens to the above code here -->
+
+<!-- Rishana paste your code after this comment -->
