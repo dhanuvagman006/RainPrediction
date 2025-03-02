@@ -116,9 +116,37 @@ data = data.drop(columns=['maxtemp', 'temparature', 'mintemp'])
 
 4. **`data =`**: The result of the `drop()` operation is reassigned back to `data`, so the DataFrame `data` is updated without the dropped columns.
 
-To summarize:
-- The code drops the columns `'maxtemp'`, `'temparature'` (which seems like a typo), and `'mintemp'` from the `data` DataFrame and updates it in place.
 
 ```
 data.head()
 ```
+
+1. **`data`**: Refers to the pandas DataFrame containing your data.
+   
+2. **`head()`**: A pandas method used to display the first 5 rows of the DataFrame by default.
+
+```
+print(data["rainfall"].value_counts())
+```
+Here’s a short, point-wise explanation of the code `print(data["rainfall"].value_counts())`:
+
+1. **`data`**: Refers to the pandas DataFrame containing your data.
+   
+2. **`["rainfall"]`**: This selects the column named `"rainfall"` from the DataFrame `data`.
+
+3. **`value_counts()`**: A pandas method that counts the unique values in the specified column (`rainfall` in this case) and returns the frequency of each unique value.
+
+4. **`print()`**: Displays the output of the `value_counts()` method, which shows the count of unique values in the "rainfall" column.
+
+```
+df_majority = data[data["rainfall"] == 1]
+df_minority = data[data["rainfall"] == 0]
+```
+
+1. **`df_majority = data[data["rainfall"] == 1]`**:
+   - **`data["rainfall"] == 1`**: Filters the DataFrame to select rows where the `"rainfall"` column has a value of `1`.
+   - **`data[...]`**: The filtered rows are assigned to a new DataFrame `df_majority`, which contains only the rows with `rainfall` equal to `1`.
+
+2. **`df_minority = data[data["rainfall"] == 0]`**:
+   - **`data["rainfall"] == 0`**: Filters the DataFrame to select rows where the `"rainfall"` column has a value of `0`.
+   - **`data[...]`**: The filtered rows are assigned to a new DataFrame `df_minority`, which contains only the rows with `rainfall` equal to `0`.
