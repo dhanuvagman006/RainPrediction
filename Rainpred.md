@@ -105,49 +105,49 @@ data["windspeed"] = data["windspeed"].fillna(data["windspeed"].median())
 data = data.drop(columns=['maxtemp', 'temparature', 'mintemp'])
 ```
 
-1. **`data`**: Refers to a pandas DataFrame that you're working with.
+**`data`**: Refers to a pandas DataFrame that you're working with.
    
-2. **`drop()`**: A pandas method used to remove specific rows or columns from a DataFrame.
+**`drop()`**: A pandas method used to remove specific rows or columns from a DataFrame.
 
-3. **`columns=['maxtemp', 'temparature', 'mintemp']`**: Specifies the names of the columns to be removed from the DataFrame. 
+**`columns=['maxtemp', 'temparature', 'mintemp']`**: Specifies the names of the columns to be removed from the DataFrame. 
    - `maxtemp`: Likely the column for maximum temperature.
    - `temparature`: Appears to be a typo for `temperature`.
    - `mintemp`: Likely the column for minimum temperature.
 
-4. **`data =`**: The result of the `drop()` operation is reassigned back to `data`, so the DataFrame `data` is updated without the dropped columns.
+**`data =`**: The result of the `drop()` operation is reassigned back to `data`, so the DataFrame `data` is updated without the dropped columns.
 
 
 ```
 data.head()
 ```
 
-1. **`data`**: Refers to the pandas DataFrame containing your data.
+**`data`**: Refers to the pandas DataFrame containing your data.
    
-2. **`head()`**: A pandas method used to display the first 5 rows of the DataFrame by default.
+**`head()`**: A pandas method used to display the first 5 rows of the DataFrame by default.
 
 ```
 print(data["rainfall"].value_counts())
 ```
-Here’s a short, point-wise explanation of the code `print(data["rainfall"].value_counts())`:
+`print(data["rainfall"].value_counts())`:
 
-1. **`data`**: Refers to the pandas DataFrame containing your data.
+**`data`**: Refers to the pandas DataFrame containing your data.
    
-2. **`["rainfall"]`**: This selects the column named `"rainfall"` from the DataFrame `data`.
+**`["rainfall"]`**: This selects the column named `"rainfall"` from the DataFrame `data`.
 
-3. **`value_counts()`**: A pandas method that counts the unique values in the specified column (`rainfall` in this case) and returns the frequency of each unique value.
+**`value_counts()`**: A pandas method that counts the unique values in the specified column (`rainfall` in this case) and returns the frequency of each unique value.
 
-4. **`print()`**: Displays the output of the `value_counts()` method, which shows the count of unique values in the "rainfall" column.
+**`print()`**: Displays the output of the `value_counts()` method, which shows the count of unique values in the "rainfall" column.
 
 ```
 df_majority = data[data["rainfall"] == 1]
 df_minority = data[data["rainfall"] == 0]
 ```
 
-1. **`df_majority = data[data["rainfall"] == 1]`**:
+**`df_majority = data[data["rainfall"] == 1]`**:
    - **`data["rainfall"] == 1`**: Filters the DataFrame to select rows where the `"rainfall"` column has a value of `1`.
    - **`data[...]`**: The filtered rows are assigned to a new DataFrame `df_majority`, which contains only the rows with `rainfall` equal to `1`.
 
-2. **`df_minority = data[data["rainfall"] == 0]`**:
+**`df_minority = data[data["rainfall"] == 0]`**:
    - **`data["rainfall"] == 0`**: Filters the DataFrame to select rows where the `"rainfall"` column has a value of `0`.
    - **`data[...]`**: The filtered rows are assigned to a new DataFrame `df_minority`, which contains only the rows with `rainfall` equal to `0`.
 
@@ -156,11 +156,11 @@ print(df_majority.shape)
 print(df_minority.shape)
 ```
 
-1. **`print(df_majority.shape)`**:
+**`print(df_majority.shape)`**:
    - **`df_majority.shape`**: The `.shape` attribute returns the dimensions of the `df_majority` DataFrame (number of rows and columns).
    - **`print()`**: Displays the dimensions (rows, columns) of the `df_majority` DataFrame.
 
-2. **`print(df_minority.shape)`**:
+**`print(df_minority.shape)`**:
    - **`df_minority.shape`**: The `.shape` attribute returns the dimensions of the `df_minority` DataFrame (number of rows and columns).
    - **`print()`**: Displays the dimensions (rows, columns) of the `df_minority` DataFrame.
-   
+
