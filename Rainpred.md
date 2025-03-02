@@ -1,16 +1,35 @@
-#RainPrediction
+# Rain Prediction
+
+This project aims to predict rainfall using machine learning techniques. It leverages Python libraries for data processing, visualization, and model training.
+
+## Dependencies
+
+Ensure you have the following Python libraries installed:
+- `numpy` 
+- `pandas` 
+- `matplotlib` 
+- `seaborn` 
+- `scikit-learn` 
+- `pickle` 
+
+You can install them using:
+```bash
+pip install numpy pandas matplotlib seaborn scikit-learn
 ```
-import numpy as np #loads NumPy for fast math and array operations.
-import pandas as pd #loads Pandas for easy data handling and analysis.
-import matplotlib.pyplot as plt #loads Matplotlib for creating charts and graphs.
-import seaborn as sns #loads Seaborn for advanced and beautiful data visualizations.
-from sklearn.utils import resample #imports a function to randomly resample data, useful for bootstrapping and balancing datasets.
-from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score # imports functions for splitting data, tuning hyperparameters, and evaluating models.
-from sklearn.ensemble import RandomForestClassifier #Imports a decision-tree-based classifier.
-from sklearn.metrics import classification_report, confusion_matrix, accuracy_score #Imports functions to evaluate model performance.
-import pickle #Imports Pickle for saving and loading Python objects.
-data = pd.read_csv("/content/Rainfall.csv") #
 
+## Code Breakdown
+
+```python
+import numpy as np  
+import pandas as pd  
+import matplotlib.pyplot as plt  
+import seaborn as sns  
+
+from sklearn.utils import resample  
+from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score  
+from sklearn.ensemble import RandomForestClassifier  
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score  
+import pickle  
+
+data = pd.read_csv("/content/Rainfall.csv")
 ```
-
-
