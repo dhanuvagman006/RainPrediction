@@ -54,6 +54,14 @@ data = pd.read_csv("/content/Rainfall.csv")
 ```
 data.head()
 ```
+`data.head()` displays the first **five rows** of the dataset.
+
+## Code Breakdown
+
+```
+# remove extra  spaces in all columns
+data.columns = data.columns.str.strip()
+```
 
 <!-- Amshu start from here and explain what happens to the above code here -->
 
