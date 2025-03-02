@@ -17,8 +17,6 @@ You can install them using:
 pip install numpy pandas matplotlib seaborn scikit-learn
 ```
 
-## Code Breakdown
-
 ```python
 import numpy as np  
 import pandas as pd  
@@ -42,21 +40,15 @@ import pickle
 `from sklearn.metrics import classification_report, confusion_matrix, accuracy_score` imports functions for **evaluating model performance**.\
 `import pickle` imports the **Pickle** module for **saving and loading Python objects**.\
 
-## Code Breakdown
-
 ```
 data = pd.read_csv("/content/Rainfall.csv")
 ```
 `data = pd.read_csv("/content/Rainfall.csv")` loads the **"Rainfall.csv"** file into a Pandas DataFrame for data analysis.
 
-## Code Breakdown
-
 ```
 data.head()
 ```
 `data.head()` displays the first **five rows** of the dataset.
-
-## Code Breakdown
 
 ```
 # remove extra  spaces in all columns
@@ -64,14 +56,12 @@ data.columns = data.columns.str.strip()
 ```
 `data.columns = data.columns.str.strip()` removes **extra spaces** from all column names to ensure clean and consistent headers.
 
-## Code Breakdown
 
 ```
 data.columns
 ```
 `data.columns` displays the **list of column names** in the dataset.
 
-## Code Breakdown
 ```
 print("Data Info:")
 data.info()
@@ -79,19 +69,35 @@ data.info()
 `print("Data Info:")` simply prints the text **"Data Info:"** to the output.\
 `data.info()` displays **column names, data types, non-null counts, and memory usage** of the dataset.
 
-## Code Breakdown
 ```
 data = data.drop(columns=["day"])
 ```
 `data = data.drop(columns=["day"])` removes the **"day"** column from the dataset.
 
-## Code Breakdown
 ```
 data.head()
 ```
 `data.head()` displays the first **five rows** of the dataset.
 
-## Code Breakdown
+```
+print(data.isnull().sum())
+```
+`print(data.isnull().sum())` prints the **number of missing (null) values** in each column of the dataset.
+
+```
+data["winddirection"].unique()
+```
+`data["winddirection"].unique()` returns an array of **unique values** present in the `"winddirection"` column.
+
+```
+# handle missing values
+data["winddirection"] = data["winddirection"].fillna(data["winddirection"].mode()[0])
+data["windspeed"] = data["windspeed"].fillna(data["windspeed"].median())
+```
+`data["winddirection"] = data["winddirection"].fillna(data["winddirection"].mode()[0])` **fills missing values** in the `"winddirection"` column with the most frequently occurring value (**mode**).\
+`data["windspeed"] = data["windspeed"].fillna(data["windspeed"].median())` **fills missing values** in the `"windspeed"` column with its **median** value.
+
+
 
 <!-- Amshu start from here and explain what happens to the above code here -->
 
