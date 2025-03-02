@@ -62,7 +62,27 @@ data.head()
 # remove extra  spaces in all columns
 data.columns = data.columns.str.strip()
 ```
+`data.columns = data.columns.str.strip()` removes **extra spaces** from all column names to ensure clean and consistent headers.
 
+## Code Breakdown
+
+```
+data.columns
+```
+`data.columns` displays the **list of column names** in the dataset.
+
+## Code Breakdown
+```
+print("Data Info:")
+data.info()
+```
+`print("Data Info:")` simply prints the text **"Data Info:"** to the output.
+`data.info()` displays **column names, data types, non-null counts, and memory usage** of the dataset.
+
+## Code Breakdown
+```
+
+```
 <!-- Amshu start from here and explain what happens to the above code here -->
 
 <!-- Rishana paste your code after this comment -->
