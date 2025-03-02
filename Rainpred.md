@@ -47,6 +47,14 @@ import pickle
 ```
 data = pd.read_csv("/content/Rainfall.csv")
 ```
+`data = pd.read_csv("/content/Rainfall.csv")` loads the **"Rainfall.csv"** file into a Pandas DataFrame for data analysis.
+
+## Code Breakdown
+
+```
+data.head()
+```
+
 <!-- Amshu start from here and explain what happens to the above code here -->
 
 <!-- Rishana paste your code after this comment -->
