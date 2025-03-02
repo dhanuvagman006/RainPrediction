@@ -92,6 +92,27 @@ data.head()
 `data.head()` displays the first **five rows** of the dataset.
 
 ## Code Breakdown
+```
+print(data.isnull().sum())
+```
+`print(data.isnull().sum())` prints the **number of missing (null) values** in each column of the dataset.
+
+## Code Breakdown
+```
+data["winddirection"].unique()
+```
+`data["winddirection"].unique()` returns an array of **unique values** present in the `"winddirection"` column.
+
+## Code Breakdown
+```
+# handle missing values
+data["winddirection"] = data["winddirection"].fillna(data["winddirection"].mode()[0])
+data["windspeed"] = data["windspeed"].fillna(data["windspeed"].median())
+```
+`data["winddirection"] = data["winddirection"].fillna(data["winddirection"].mode()[0])` **fills missing values** in the `"winddirection"` column with the most frequently occurring value (**mode**).\
+`data["windspeed"] = data["windspeed"].fillna(data["windspeed"].median())` **fills missing values** in the `"windspeed"` column with its **median** value.
+
+
 
 <!-- Amshu start from here and explain what happens to the above code here -->
 
