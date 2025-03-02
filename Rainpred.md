@@ -32,6 +32,7 @@ from sklearn.metrics import classification_report, confusion_matrix, accuracy_sc
 import pickle  
 ```
 
+`import numpy as np` imports the NumPy library, which is used for numerical computations in Python.
 <!-- Amshu start from here and explain what happens to the above code here -->
 
 <!-- Rishana paste your code after this comment -->
