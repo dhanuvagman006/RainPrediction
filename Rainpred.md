@@ -176,3 +176,48 @@ df_majority_downsampled = resample(df_majority, replace=False, n_samples=len(df_
 **`random_state=42`**: Sets a seed for the random number generator to ensure reproducibility of the sampling process.
 
 **`df_majority_downsampled`**: The result of the downsampling operation, which contains a subset of rows from the majority class (`df_majority`) with the same number of rows as the minority class.
+
+``` 
+ df_majority_downsampled.shape
+```
+
+**`df_majority_downsampled`**: Refers to the DataFrame containing the downsampled majority class data (after using the `resample` function to match the size of the minority class).
+
+**`.shape`**: This attribute returns the dimensions of the DataFrame, specifically the number of rows and columns.
+
+``` 
+df_downsampled = pd.concat([df_majority_downsampled, df_minority])
+```
+**`pd.concat([df_majority_downsampled, df_minority])`**:
+   - **`pd.concat()`**: A pandas function used to concatenate two or more pandas objects (Series or DataFrames) along a particular axis (rows or columns). citeturn0search0
+   - **`[df_majority_downsampled, df_minority]`**: A list containing the two DataFrames to be concatenated. In this case, `df_majority_downsampled` (the downsampled majority class) and `df_minority` (the minority class).
+
+**`df_downsampled =`**:
+   - Assigns the concatenated result to `df_downsampled`, creating a new DataFrame that combines the downsampled majority class and the minority class.
+
+```
+df_downsampled.shape
+```
+**`df_downsampled`**: This DataFrame is created by concatenating the downsampled majority class (`df_majority_downsampled`) and the minority class (`df_minority`), resulting in a balanced dataset.
+
+**`.shape`**: This attribute provides the dimensions of the DataFrame:
+   - The first value in the tuple indicates the total number of rows.
+   - The second value indicates the total number of columns.
+
+```
+df_downsampled.head()
+```
+ **`df_downsampled.head()`**:
+   - **`df_downsampled`**: Refers to the pandas DataFrame that combines the downsampled majority class and the minority class, resulting in a balanced dataset.
+   - **`.head()`**: A pandas method that returns the first 5 rows of the DataFrame by default. It's useful for quickly inspecting the initial entries of the dataset. citeturn0search0
+
+```
+df_downsampled = df_downsampled.sample(frac=1, random_state=42).reset_index(drop=True)
+```
+ **`df_downsampled.sample(frac=1, random_state=42)`**:
+   - **`sample(frac=1)`**: Shuffles all rows in the DataFrame. Setting `frac=1` means returning all rows in random order. citeturn0search0
+   - **`random_state=42`**: Ensures reproducibility by initializing the random number generator to a fixed state.
+
+ **`.reset_index(drop=True)`**:
+   - **`reset_index()`**: Resets the index of the DataFrame, assigning a new sequential index starting from 0.
+   - **`drop=True`**: Prevents the old index from being added as a new column in the DataFrame. citeturn0search2
