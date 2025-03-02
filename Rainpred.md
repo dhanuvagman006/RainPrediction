@@ -76,13 +76,23 @@ data.columns
 print("Data Info:")
 data.info()
 ```
-`print("Data Info:")` simply prints the text **"Data Info:"** to the output.
+`print("Data Info:")` simply prints the text **"Data Info:"** to the output.\
 `data.info()` displays **column names, data types, non-null counts, and memory usage** of the dataset.
 
 ## Code Breakdown
 ```
-
+data = data.drop(columns=["day"])
 ```
+`data = data.drop(columns=["day"])` removes the **"day"** column from the dataset.
+
+## Code Breakdown
+```
+data.head()
+```
+`data.head()` displays the first **five rows** of the dataset.
+
+## Code Breakdown
+
 <!-- Amshu start from here and explain what happens to the above code here -->
 
 <!-- Rishana paste your code after this comment -->
