@@ -225,4 +225,5 @@ df_downsampled = df_downsampled.sample(frac=1, random_state=42).reset_index(drop
  **`.reset_index(drop=True)`**:
    - **`reset_index()`**: Resets the index of the DataFrame, assigning a new sequential index starting from 0.
    - **`drop=True`**: Prevents the old index from being added as a new column in the DataFrame.
+   
 <!-- Rakshitha paste your code after this comment -->
