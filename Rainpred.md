@@ -105,12 +105,74 @@ data["windspeed"] = data["windspeed"].fillna(data["windspeed"].median())
 data = data.drop(columns=['maxtemp', 'temparature', 'mintemp'])
 ```
 
-drop(columns=[...]): Removes the specified columns from the data DataFrame.
+**`data`**: Refers to a pandas DataFrame that you're working with.
+   
+**`drop()`**: A pandas method used to remove specific rows or columns from a DataFrame.
 
-The columns being dropped are maxtemp, temparature, and mintemp, likely because they are highly correlated with other features and may not add additional value to the model.
+**`columns=['maxtemp', 'temparature', 'mintemp']`**: Specifies the names of the columns to be removed from the DataFrame. 
+   - `maxtemp`: Likely the column for maximum temperature.
+   - `temparature`: Appears to be a typo for `temperature`.
+   - `mintemp`: Likely the column for minimum temperature.
 
-data =: Reassigns the result to data, effectively updating the DataFrame without the dropped columns.
+**`data =`**: The result of the `drop()` operation is reassigned back to `data`, so the DataFrame `data` is updated without the dropped columns.
+
 
 ```
 data.head()
 ```
+
+**`data`**: Refers to the pandas DataFrame containing your data.
+   
+**`head()`**: A pandas method used to display the first 5 rows of the DataFrame by default.
+
+```
+print(data["rainfall"].value_counts())
+```
+`print(data["rainfall"].value_counts())`:
+
+**`data`**: Refers to the pandas DataFrame containing your data.
+   
+**`["rainfall"]`**: This selects the column named `"rainfall"` from the DataFrame `data`.
+
+**`value_counts()`**: A pandas method that counts the unique values in the specified column (`rainfall` in this case) and returns the frequency of each unique value.
+
+**`print()`**: Displays the output of the `value_counts()` method, which shows the count of unique values in the "rainfall" column.
+
+```
+df_majority = data[data["rainfall"] == 1]
+df_minority = data[data["rainfall"] == 0]
+```
+
+**`df_majority = data[data["rainfall"] == 1]`**:
+   - **`data["rainfall"] == 1`**: Filters the DataFrame to select rows where the `"rainfall"` column has a value of `1`.
+   - **`data[...]`**: The filtered rows are assigned to a new DataFrame `df_majority`, which contains only the rows with `rainfall` equal to `1`.
+
+**`df_minority = data[data["rainfall"] == 0]`**:
+   - **`data["rainfall"] == 0`**: Filters the DataFrame to select rows where the `"rainfall"` column has a value of `0`.
+   - **`data[...]`**: The filtered rows are assigned to a new DataFrame `df_minority`, which contains only the rows with `rainfall` equal to `0`.
+
+```
+print(df_majority.shape)
+print(df_minority.shape)
+```
+
+**`print(df_majority.shape)`**:
+   - **`df_majority.shape`**: The `.shape` attribute returns the dimensions of the `df_majority` DataFrame (number of rows and columns).
+   - **`print()`**: Displays the dimensions (rows, columns) of the `df_majority` DataFrame.
+
+**`print(df_minority.shape)`**:
+   - **`df_minority.shape`**: The `.shape` attribute returns the dimensions of the `df_minority` DataFrame (number of rows and columns).
+   - **`print()`**: Displays the dimensions (rows, columns) of the `df_minority` DataFrame.
+   ```
+df_majority_downsampled = resample(df_majority, replace=False, n_samples=len(df_minority), random_state=42)
+``` 
+**`resample()`**: A function from the `sklearn.utils` module used to resample (downsample or upsample) a DataFrame or array.
+
+**`df_majority`**: The DataFrame containing the majority class (rows where `"rainfall"` is 1). 
+**`replace=False`**: Ensures that sampling is done without replacement, meaning no row is selected more than once.
+
+**`n_samples=len(df_minority)`**: Specifies that the number of rows in the downsampled `df_majority` DataFrame should match the number of rows in the `df_minority` DataFrame (to balance the classes).
+
+**`random_state=42`**: Sets a seed for the random number generator to ensure reproducibility of the sampling process.
+
+**`df_majority_downsampled`**: The result of the downsampling operation, which contains a subset of rows from the majority class (`df_majority`) with the same number of rows as the minority class.
