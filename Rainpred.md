@@ -41,6 +41,12 @@ import pickle
 `from sklearn.ensemble import RandomForestClassifier` imports the **RandomForestClassifier** for **building ensemble-based classification models**.\
 `from sklearn.metrics import classification_report, confusion_matrix, accuracy_score` imports functions for **evaluating model performance**.\
 `import pickle` imports the **Pickle** module for **saving and loading Python objects**.\
+
+## Code Breakdown
+
+```
+data = pd.read_csv("/content/Rainfall.csv")
+```
 <!-- Amshu start from here and explain what happens to the above code here -->
 
 <!-- Rishana paste your code after this comment -->
