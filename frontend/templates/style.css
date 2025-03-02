@@ -1,4 +1,4 @@
-/* General Body Styling */
+
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(to right, #000428, #004e92);
@@ -14,7 +14,7 @@ body {
     overflow: auto;
 }
 
-/* Rain Effect */
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -44,7 +44,7 @@ body {
     animation: rain linear infinite;
 }
 
-/* Heading Styling */
+
 h1 {
     text-align: center;
     color: white;
@@ -74,13 +74,13 @@ form {
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Form Animation */
+
 @keyframes slideUp {
     from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* Label Styling */
+
 label {
     font-weight: 600;
     margin-top: 12px;
@@ -88,7 +88,7 @@ label {
     font-size: 16px;
 }
 
-/* Input Styling */
+
 input {
     padding: 12px;
     margin-top: 6px;
@@ -112,7 +112,7 @@ input:focus {
     box-shadow: 0px 0px 8px rgba(0, 198, 255, 0.6);
 }
 
-/* Button Styling */
+
 button {
     background: linear-gradient(to right, #1e3c72, #2a5298);
     color: white;
@@ -133,7 +133,7 @@ button:hover {
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Responsive Design */
+
 @media (max-width: 480px) {
     form {
         max-width: 90%;
