@@ -98,7 +98,4 @@ data["windspeed"] = data["windspeed"].fillna(data["windspeed"].median())
 `data["windspeed"] = data["windspeed"].fillna(data["windspeed"].median())` **fills missing values** in the `"windspeed"` column with its **median** value.
 
 
-
-<!-- Amshu start from here and explain what happens to the above code here -->
-
 <!-- Rishana paste your code after this comment -->
