@@ -105,8 +105,6 @@ data["windspeed"] = data["windspeed"].fillna(data["windspeed"].median())
 data = data.drop(columns=['maxtemp', 'temparature', 'mintemp'])
 ```
 
-Sure! Here's a short, point-wise explanation of the code:
-
 1. **`data`**: Refers to a pandas DataFrame that you're working with.
    
 2. **`drop()`**: A pandas method used to remove specific rows or columns from a DataFrame.
