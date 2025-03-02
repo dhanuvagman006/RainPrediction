@@ -104,7 +104,6 @@ data["windspeed"] = data["windspeed"].fillna(data["windspeed"].median())
 ```
 data = data.drop(columns=['maxtemp', 'temparature', 'mintemp'])
 ```
-data = data.drop(columns=['maxtemp', 'temparature', 'mintemp']):
 
 drop(columns=[...]): Removes the specified columns from the data DataFrame.
 
