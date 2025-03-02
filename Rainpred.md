@@ -32,7 +32,7 @@ from sklearn.metrics import classification_report, confusion_matrix, accuracy_sc
 import pickle  
 ```
 
-`import numpy as np` imports the NumPy library, which is used for numerical computations in Python.
+`import numpy as np` imports the NumPy library, which is used for numerical computations in Python.\
 `import pandas as pd` imports the Pandas library, which is used for data analysis and manipulation in Python.
 `import matplotlib.pyplot as plt` imports Matplotlib’s Pyplot module for creating visualizations like graphs and charts.
 `import seaborn as sns` imports Seaborn, a Python library for making statistical data visualizations.
