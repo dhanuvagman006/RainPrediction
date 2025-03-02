@@ -163,4 +163,16 @@ print(df_minority.shape)
 **`print(df_minority.shape)`**:
    - **`df_minority.shape`**: The `.shape` attribute returns the dimensions of the `df_minority` DataFrame (number of rows and columns).
    - **`print()`**: Displays the dimensions (rows, columns) of the `df_minority` DataFrame.
+   ```
+df_majority_downsampled = resample(df_majority, replace=False, n_samples=len(df_minority), random_state=42)
+``` 
+**`resample()`**: A function from the `sklearn.utils` module used to resample (downsample or upsample) a DataFrame or array.
 
+**`df_majority`**: The DataFrame containing the majority class (rows where `"rainfall"` is 1). 
+**`replace=False`**: Ensures that sampling is done without replacement, meaning no row is selected more than once.
+
+**`n_samples=len(df_minority)`**: Specifies that the number of rows in the downsampled `df_majority` DataFrame should match the number of rows in the `df_minority` DataFrame (to balance the classes).
+
+**`random_state=42`**: Sets a seed for the random number generator to ensure reproducibility of the sampling process.
+
+**`df_majority_downsampled`**: The result of the downsampling operation, which contains a subset of rows from the majority class (`df_majority`) with the same number of rows as the minority class.
