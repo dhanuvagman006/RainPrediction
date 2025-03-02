@@ -104,3 +104,4 @@ data["windspeed"] = data["windspeed"].fillna(data["windspeed"].median())
 ```
 data = data.drop(columns=['maxtemp', 'temparature', 'mintemp'])
 ```
+rsh
