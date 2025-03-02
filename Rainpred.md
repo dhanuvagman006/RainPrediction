@@ -150,3 +150,17 @@ df_minority = data[data["rainfall"] == 0]
 2. **`df_minority = data[data["rainfall"] == 0]`**:
    - **`data["rainfall"] == 0`**: Filters the DataFrame to select rows where the `"rainfall"` column has a value of `0`.
    - **`data[...]`**: The filtered rows are assigned to a new DataFrame `df_minority`, which contains only the rows with `rainfall` equal to `0`.
+
+```
+print(df_majority.shape)
+print(df_minority.shape)
+```
+
+1. **`print(df_majority.shape)`**:
+   - **`df_majority.shape`**: The `.shape` attribute returns the dimensions of the `df_majority` DataFrame (number of rows and columns).
+   - **`print()`**: Displays the dimensions (rows, columns) of the `df_majority` DataFrame.
+
+2. **`print(df_minority.shape)`**:
+   - **`df_minority.shape`**: The `.shape` attribute returns the dimensions of the `df_minority` DataFrame (number of rows and columns).
+   - **`print()`**: Displays the dimensions (rows, columns) of the `df_minority` DataFrame.
+   
