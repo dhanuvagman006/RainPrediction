@@ -111,3 +111,7 @@ drop(columns=[...]): Removes the specified columns from the data DataFrame.
 The columns being dropped are maxtemp, temparature, and mintemp, likely because they are highly correlated with other features and may not add additional value to the model.
 
 data =: Reassigns the result to data, effectively updating the DataFrame without the dropped columns.
+
+```
+data.head()
+```
