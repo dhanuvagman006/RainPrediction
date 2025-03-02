@@ -1,9 +1,9 @@
 #RainPrediction
 ```
-import numpy as np //used to load the NumPy library with a short alias (np), making it easy to perform fast mathematical operations on arrays and large datasets.
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+import numpy as np #loads NumPy for fast math and array operations.
+import pandas as pd #loads Pandas for easy data handling and analysis.
+import matplotlib.pyplot as plt #loads Matplotlib for creating charts and graphs.
+import seaborn as sns #loads Seaborn for advanced and beautiful data visualizations.
 from sklearn.utils import resample
 from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score
 from sklearn.ensemble import RandomForestClassifier
@@ -12,4 +12,4 @@ import pickle
 
 ```
 
-This is the Explanation part\
+
