@@ -105,11 +105,21 @@ data["windspeed"] = data["windspeed"].fillna(data["windspeed"].median())
 data = data.drop(columns=['maxtemp', 'temparature', 'mintemp'])
 ```
 
-drop(columns=[...]): Removes the specified columns from the data DataFrame.
+Sure! Here's a short, point-wise explanation of the code:
 
-The columns being dropped are maxtemp, temparature, and mintemp, likely because they are highly correlated with other features and may not add additional value to the model.
+1. **`data`**: Refers to a pandas DataFrame that you're working with.
+   
+2. **`drop()`**: A pandas method used to remove specific rows or columns from a DataFrame.
 
-data =: Reassigns the result to data, effectively updating the DataFrame without the dropped columns.
+3. **`columns=['maxtemp', 'temparature', 'mintemp']`**: Specifies the names of the columns to be removed from the DataFrame. 
+   - `maxtemp`: Likely the column for maximum temperature.
+   - `temparature`: Appears to be a typo for `temperature`.
+   - `mintemp`: Likely the column for minimum temperature.
+
+4. **`data =`**: The result of the `drop()` operation is reassigned back to `data`, so the DataFrame `data` is updated without the dropped columns.
+
+To summarize:
+- The code drops the columns `'maxtemp'`, `'temparature'` (which seems like a typo), and `'mintemp'` from the `data` DataFrame and updates it in place.
 
 ```
 data.head()
