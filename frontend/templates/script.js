@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("JavaScript is working! 🎉");
-
     const form = document.querySelector("form");
 
     if (form) {

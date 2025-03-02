@@ -97,9 +97,11 @@ data["windspeed"] = data["windspeed"].fillna(data["windspeed"].median())
 `data["winddirection"] = data["winddirection"].fillna(data["winddirection"].mode()[0])` **fills missing values** in the `"winddirection"` column with the most frequently occurring value (**mode**).\
 `data["windspeed"] = data["windspeed"].fillna(data["windspeed"].median())` **fills missing values** in the `"windspeed"` column with its **median** value.
 
+<!-- Medha Shetty paste your code after this comment -->
+
+
 
 <!-- Rishana paste your code after this comment -->
-
 
 ```
 data = data.drop(columns=['maxtemp', 'temparature', 'mintemp'])
@@ -163,9 +165,11 @@ print(df_minority.shape)
 **`print(df_minority.shape)`**:
    - **`df_minority.shape`**: The `.shape` attribute returns the dimensions of the `df_minority` DataFrame (number of rows and columns).
    - **`print()`**: Displays the dimensions (rows, columns) of the `df_minority` DataFrame.
+   
    ```
 df_majority_downsampled = resample(df_majority, replace=False, n_samples=len(df_minority), random_state=42)
-``` 
+   ``` 
+
 **`resample()`**: A function from the `sklearn.utils` module used to resample (downsample or upsample) a DataFrame or array.
 
 **`df_majority`**: The DataFrame containing the majority class (rows where `"rainfall"` is 1). 
@@ -221,3 +225,4 @@ df_downsampled = df_downsampled.sample(frac=1, random_state=42).reset_index(drop
  **`.reset_index(drop=True)`**:
    - **`reset_index()`**: Resets the index of the DataFrame, assigning a new sequential index starting from 0.
    - **`drop=True`**: Prevents the old index from being added as a new column in the DataFrame.
+<!-- Rakshitha paste your code after this comment -->
