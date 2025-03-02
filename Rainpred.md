@@ -33,3 +33,8 @@ import pickle
 ```
 
 <!-- Amshu start from here and explain what happens the above code here -->
+
+
+```
+data = data.drop(columns=['maxtemp', 'temparature', 'mintemp'])
+```
