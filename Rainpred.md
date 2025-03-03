@@ -386,3 +386,40 @@ print(y)
 
 **`y`** – A Pandas Series containing the `"rainfall"` column (dependent/target variable).  
 **`print(y)`** – Displays all values in `y` in the console.  
+
+```
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+```
+
+
+**`train_test_split`** – A function from `sklearn.model_selection` used to split data.  
+**`X_train, X_test`** – `X_train` contains training feature data, and `X_test` contains testing feature data.  
+**`y_train, y_test`** – `y_train` contains training target data, and `y_test` contains testing target data.  
+**`test_size=0.2`** – 20% of the data is used for testing, and 80% for training.  
+**`random_state=42`** – Ensures reproducibility by setting a fixed random seed.  
+
+```
+rf_model = RandomForestClassifier(random_state=42)
+
+param_grid_rf = {
+    "n_estimators": [50, 100, 200],
+    "max_features": ["sqrt", "log2"],
+    "max_depth": [None, 10, 20, 30],
+    "min_samples_split": [2, 5, 10],
+    "min_samples_leaf": [1, 2, 4]
+}
+```
+
+**`rf_model = RandomForestClassifier(random_state=42)`**  
+   - Creates a **Random Forest Classifier** instance.  
+   - `random_state=42` ensures reproducibility.  
+
+**`param_grid_rf = {...}`**  
+   - Defines a dictionary of hyperparameters for tuning the model.  
+
+**Hyperparameters in `param_grid_rf`**:  
+   - **`n_estimators`**: Number of trees in the forest (**50, 100, 200**).  
+   - **`max_features`**: Number of features considered for splitting (`"sqrt"` or `"log2"`).  
+   - **`max_depth`**: Maximum depth of trees (`None` means unlimited, or set to **10, 20, 30**).  
+   - **`min_samples_split`**: Minimum samples needed to split a node (**2, 5, 10**).  
+   - **`min_samples_leaf`**: Minimum samples required at a leaf node (**1, 2, 4**).  
