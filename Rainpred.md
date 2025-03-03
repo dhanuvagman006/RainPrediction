@@ -372,3 +372,10 @@ y = df_downsampled["rainfall"]
 **`drop(columns=["rainfall"])`** – Removes the "rainfall" column from `df_downsampled`, keeping only feature columns.  
 **`X = ...`** – Stores the remaining feature columns in `X` (independent variables).  
 **`y = df_downsampled["rainfall"]`** – Stores the "rainfall" column as `y` (dependent/target variable).  
+
+```
+print(X)
+```
+
+**`X`** – A DataFrame containing feature variables (independent variables) after removing the `"rainfall"` column.  
+**`print(X)`** – Displays the entire DataFrame `X` in the console.  
