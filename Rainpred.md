@@ -349,3 +349,8 @@ df_downsampled = df_downsampled.sample(frac=1, random_state=42).reset_index(drop
 
 <!-- Rakshitha paste your code after this comment -->
 Start from here Rish
+```
+df_downsampled.head()
+```
+**`df_downsampled`** – This is a Pandas DataFrame that has likely been downsampled (i.e., reduced in size by sampling or aggregation).
+**`.head()`** – This function returns the first five rows of the DataFrame by default.
