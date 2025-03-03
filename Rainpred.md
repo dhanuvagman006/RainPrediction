@@ -210,7 +210,7 @@ creates figure with size of 15*10 inches
   sns.boxplot(data[column])
   plt.title(f"Boxplot of {column}") 
   ```
-  iterates over selected weather parameters and plots  boxplots to visualize the distribution and detect outliers.
+iterates over selected weather parameters and plots  boxplots to visualize the distribution and detect outliers.
   
 
 ```python
