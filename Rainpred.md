@@ -228,3 +228,52 @@ df_downsampled = df_downsampled.sample(frac=1, random_state=42).reset_index(drop
 
 <!-- Rakshitha paste your code after this comment -->
 Start from here Rish
+```
+df_downsampled.head()
+```
+
+**`df_downsampled`** – This is a Pandas DataFrame that has likely been downsampled (i.e., reduced in size by sampling or aggregation).
+**`.head()`** – This function returns the first five rows of the DataFrame by default.
+
+```
+df_downsampled["rainfall"].value_counts()
+```
+`df_downsampled["rainfall"].value_counts()` is a Pandas function used to count occurrences of unique values in the "rainfall" column. Here's a point-wise explanation:
+
+ **`df_downsampled`** – A Pandas DataFrame that has been downsampled.  
+ **`["rainfall"]`** – Selects the "rainfall" column from the DataFrame.  
+ **`.value_counts()`** – Counts the occurrences of each unique value in the "rainfall" column.  
+
+```
+X = df_downsampled.drop(columns=["rainfall"])
+y = df_downsampled["rainfall"]
+```
+
+**`df_downsampled`** – A Pandas DataFrame that contains the dataset.  
+**`drop(columns=["rainfall"])`** – Removes the "rainfall" column from `df_downsampled`, keeping only feature columns.  
+**`X = ...`** – Stores the remaining feature columns in `X` (independent variables).  
+**`y = df_downsampled["rainfall"]`** – Stores the "rainfall" column as `y` (dependent/target variable).  
+
+```
+print(X)
+```
+
+**`X`** – A DataFrame containing feature variables (independent variables) after removing the `"rainfall"` column.  
+**`print(X)`** – Displays the entire DataFrame `X` in the console.
+
+```
+print(y)
+```
+
+**`y`** – A Pandas Series containing the `"rainfall"` column (dependent/target variable).  
+**`print(y)`** – Displays all values in `y` in the console.  
+
+```
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+```
+
+**`train_test_split`** – A function from `sklearn.model_selection` used to split data.  
+**`X_train, X_test`** – `X_train` contains training feature data, and `X_test` contains testing feature data.  
+**`y_train, y_test`** – `y_train` contains training target data, and `y_test` contains testing target data.  
+**`test_size=0.2`** – 20% of the data is used for testing, and 80% for training.  
+**`random_state=42`** – Ensures reproducibility by setting a fixed random seed.  
