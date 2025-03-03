@@ -538,6 +538,12 @@ Generates a prediction for `input_df` using `best_rf_model` and stores the resul
 Prints whether the model predicts "Rainfall" or "No Rainfall" based on the prediction result.
 
 ```
+# save model and feature names to a pickle file
+model_data = {"model": best_rf_model, "feature_names": X.columns.tolist()}
+
+with open("rainfall_prediction_model.pkl", "wb") as file:
+  pickle.dump(model_data, file)
+  ```
 
 
 
