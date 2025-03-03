@@ -475,3 +475,24 @@ print("Mean cross-validation score:", np.mean(cv_scores))
 
 **`np.mean(cv_scores)`**  
    - Computes the **mean cross-validation score** (average model performance across all folds).  
+
+
+<!-- line 44 to 57 code after this comment -->
+
+```
+cv_scores = cross_val_score(best_rf_model, X_train, y_train, cv=5)
+print("Cross-validation scores:", cv_scores)
+print("Mean cross-validation score:", np.mean(cv_scores))
+```
+Performs 5-fold cross-validation to evaluate `best_rf_model` on the training data (`X_train`, `y_train`).\
+`print("Cross-validation scores:", cv_scores)` Prints the cross-validation scores to show how well the model performs across different training subsets.\
+`print("Mean cross-validation score:", np.mean(cv_scores))` Prints the model's average cross-validation score.\
+
+```
+# test set performance
+y_pred = best_rf_model.predict(X_test)
+
+print("Test set Accuracy:", accuracy_score(y_test, y_pred))
+print("Test set Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
+print("Classification Report:\n", classification_report(y_test, y_pred))
+```
