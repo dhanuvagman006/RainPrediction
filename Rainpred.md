@@ -544,7 +544,45 @@ model_data = {"model": best_rf_model, "feature_names": X.columns.tolist()}
 with open("rainfall_prediction_model.pkl", "wb") as file:
   pickle.dump(model_data, file)
   ```
+Creates a dictionary `model_data` storing the trained `best_rf_model` and the feature names used in training.\
+Opens a file named `rainfall_prediction_model.pkl` in write-binary (`wb`) mode to save the model.\
+Saves the `model_data` dictionary (containing the trained model and feature names) to the file using Pickle.
 
+```
+import pickle
+import pandas as pd
+```
+Imports the `pickle` module, which is used for saving and loading Python objects like machine learning models.\
+Imports the Pandas library for data manipulation and analysis.
 
+```
+# load the trained model and feature names from the pickle file
+with open("rainfall_prediction_model.pkl", "rb") as file:
+  model_data = pickle.load(file)
+```
+Opens the file `rainfall_prediction_model.pkl` in read-binary (`rb`) mode to load the saved model.\
+Loads the saved `model_data` dictionary from the file, retrieving the trained model and feature names.
+
+```
+model = model_data["model"]
+feature_names = model_data["feature_names"]
+```
+Extracts the trained model from the `model_data` dictionary and stores it in the `model` variable.\
+Extracts the list of feature names from `model_data` and stores it in `feature_names`.
+
+```
+input_data = (1015.9, 19.9, 95, 81, 0.0, 40.0, 13.7)
+
+input_df = pd.DataFrame([input_data], columns=feature_names)
+```
+Stores weather-related input values as a tuple `input_data`, likely for making a prediction using the loaded model.\
+Creates a Pandas DataFrame `input_df` using `input_data`, assigning column names from `feature_names` for proper formatting.
+
+```
+prediction = best_rf_model.predict(input_df)
+print("Prediction result:", "Rainfall" if prediction[0] == 1 else "No Rainfall")
+```
+Uses `best_rf_model` to predict the outcome for `input_df` and stores the result in `prediction`.\  
+Prints the predicted result, displaying **"Rainfall"** if `prediction[0] == 1`, otherwise **"No Rainfall"**.
 
 
