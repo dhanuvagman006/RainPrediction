@@ -443,3 +443,15 @@ grid_search_rf.fit(X_train, y_train)
    - Trains the model with different hyperparameter combinations.  
    - Selects the **best hyperparameter combination** based on cross-validation performance.  
 
+```
+best_rf_model = grid_search_rf.best_estimator_
+
+print("best parameters for Random Forest:", grid_search_rf.best_params_)
+```
+
+**`best_rf_model = grid_search_rf.best_estimator_`**  
+   - Retrieves the **best model** from `grid_search_rf`.  
+   - The best model is trained using the optimal hyperparameters found by **GridSearchCV**.  
+
+**`print("best parameters for Random Forest:", grid_search_rf.best_params_)`**  
+   - Prints the **best hyperparameter combination** found during the tuning process.  
