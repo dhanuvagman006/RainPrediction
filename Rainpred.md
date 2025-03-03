@@ -496,3 +496,10 @@ print("Test set Accuracy:", accuracy_score(y_test, y_pred))
 print("Test set Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
 print("Classification Report:\n", classification_report(y_test, y_pred))
 ```
+`y_pred = best_rf_model.predict(X_test)` Generates predictions (`y_pred`) for the test data (`X_test`) using `best_rf_model`.\
+`print("Test set Accuracy:", accuracy_score(y_test, y_pred))` Prints the accuracy of the model on the test set.\
+`print("Test set Confusion Matrix:\n", confusion_matrix(y_test, y_pred))` Prints the confusion matrix to show the model's performance in classifying test data.\
+`print("Classification Report:\n", classification_report(y_test, y_pred))` Prints the classification report, which includes precision, recall, and F1-score for each class.
+
+```
+
