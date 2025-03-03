@@ -379,3 +379,10 @@ print(X)
 
 **`X`** – A DataFrame containing feature variables (independent variables) after removing the `"rainfall"` column.  
 **`print(X)`** – Displays the entire DataFrame `X` in the console.  
+
+```
+print(y)
+```  
+
+**`y`** – A Pandas Series containing the `"rainfall"` column (dependent/target variable).  
+**`print(y)`** – Displays all values in `y` in the console.  
