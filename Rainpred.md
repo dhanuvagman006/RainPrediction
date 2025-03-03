@@ -423,3 +423,23 @@ param_grid_rf = {
    - **`max_depth`**: Maximum depth of trees (`None` means unlimited, or set to **10, 20, 30**).  
    - **`min_samples_split`**: Minimum samples needed to split a node (**2, 5, 10**).  
    - **`min_samples_leaf`**: Minimum samples required at a leaf node (**1, 2, 4**).  
+
+```
+grid_search_rf = GridSearchCV(estimator=rf_model, param_grid=param_grid_rf, cv=5, n_jobs=-1, verbose=2)
+
+grid_search_rf.fit(X_train, y_train)
+```
+
+**`GridSearchCV`** – A Scikit-learn function used to find the best hyperparameters for a model through exhaustive search.  
+
+**`grid_search_rf = GridSearchCV(...)`**  
+   - **`estimator=rf_model`** → Uses `rf_model` (Random Forest Classifier) as the base model.  
+   - **`param_grid=param_grid_rf`** → Tests different hyperparameter combinations from `param_grid_rf`.  
+   - **`cv=5`** → Uses **5-fold cross-validation** to evaluate each combination.  
+   - **`n_jobs=-1`** → Uses **all available CPU cores** for faster computation.  
+   - **`verbose=2`** → Prints progress updates during execution.  
+
+**`grid_search_rf.fit(X_train, y_train)`**  
+   - Trains the model with different hyperparameter combinations.  
+   - Selects the **best hyperparameter combination** based on cross-validation performance.  
+
