@@ -517,6 +517,28 @@ input_df
 Displays the `input_df` DataFrame, showing the weather-related input data in a structured table format.
 
 ```
+prediction = best_rf_model.predict(input_df)
+```
+Uses `best_rf_model` to predict the output for `input_df`, storing the result in `prediction`.
+```
+print(prediction)
+```
+Prints the predicted output from `best_rf_model` for the given input data.
+
+```
+prediction[0]
+```
+Returns the first (and likely only) predicted value from `prediction`.
+
+```
+prediction = best_rf_model.predict(input_df)
+print("Prediction result:", "Rainfall" if prediction[0] == 1 else "No Rainfall")
+```
+Generates a prediction for `input_df` using `best_rf_model` and stores the result in `prediction`.\
+Prints whether the model predicts "Rainfall" or "No Rainfall" based on the prediction result.
+
+```
+
 
 
 
