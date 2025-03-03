@@ -1,35 +1,6 @@
-# Rain Prediction
-## Overview
-This project aims to predict rainfall using machine learning techniques. It leverages Python libraries for data processing, visualization, and model training.
 
-## Drpendencies
-Ensure you have the following Python libraries installed:
 
--  `numpy` -Numerical computations
-- `pandas` -Data manipulation and analysis
-- `matplotlib` -Data visualization
-- `seaborn` -Statistical data visualization
-- `scikit-Learn` -Machine learning tools
-- `pickle` -Model saving and loading
-### Installation
-You can install them using:
-```bash
-pip install numpy pandas matplotlib seaborn scikit-learn
-```
-## Importing Libraries
-```python
-import numpy as np  
-import pandas as pd  
-import matplotlib.pyplot as plt  
-import seaborn as sns  
-
-from sklearn.utils import resample  
-from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score  
-from sklearn.ensemble import RandomForestClassifier  
-from sklearn.metrics import classification_report, confusion_matrix, accuracy_score  
-import pickle  
-```
-## checking the number of missing values
+### checking the number of missing values
 
 
 ```python
@@ -44,7 +15,7 @@ data["rainfall"].unique()
 ```
 retrives and display unique values in "rainfall"coloum.
 
-## converting the yes & no to 1 and 0 respectively
+### converting the yes & no to 1 and 0 respectively
 
 ```python
 data["rainfall"] = data["rainfall"].map({"yes": 1, "no": 0})
@@ -63,7 +34,7 @@ data.shape
 ```
  prints the shape(number of rows and coloums) of the dataset.
 
-## setting plot style for all the plots
+### setting plot style for all the plots
 
 ``` python
 sns.set(style="whitegrid")
@@ -113,7 +84,7 @@ plt.show()
 ```
  creates figure with size of 6*4inches, and displays a count plot distrubution of rainfall(1=Yes,0=No).
 
-## correlation matrix
+### correlation matrix
 
 ```python
 plt.figure(figsize=(10, 8)) 
