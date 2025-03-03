@@ -354,3 +354,12 @@ df_downsampled.head()
 ```
 **`df_downsampled`** – This is a Pandas DataFrame that has likely been downsampled (i.e., reduced in size by sampling or aggregation).
 **`.head()`** – This function returns the first five rows of the DataFrame by default.
+
+```
+df_downsampled["rainfall"].value_counts()
+```
+
+**`df_downsampled`** – A Pandas DataFrame that has been downsampled.  
+**`["rainfall"]`** – Selects the "rainfall" column from the DataFrame.  
+**`.value_counts()`** – Counts the occurrences of each unique value in the "rainfall" column.  
+
