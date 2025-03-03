@@ -496,10 +496,27 @@ print("Test set Accuracy:", accuracy_score(y_test, y_pred))
 print("Test set Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
 print("Classification Report:\n", classification_report(y_test, y_pred))
 ```
+
 `y_pred = best_rf_model.predict(X_test)` Generates predictions (`y_pred`) for the test data (`X_test`) using `best_rf_model`.\
 `print("Test set Accuracy:", accuracy_score(y_test, y_pred))` Prints the accuracy of the model on the test set.\
 `print("Test set Confusion Matrix:\n", confusion_matrix(y_test, y_pred))` Prints the confusion matrix to show the model's performance in classifying test data.\
 `print("Classification Report:\n", classification_report(y_test, y_pred))` Prints the classification report, which includes precision, recall, and F1-score for each class.
 
 ```
+input_data = (1015.9, 19.9, 95, 81, 0.0, 40.0, 13.7)
+
+input_df = pd.DataFrame([input_data], columns=['pressure', 'dewpoint', 'humidity', 'cloud', 'sunshine','winddirection', 'windspeed'])
+```
+
+Stores a tuple `input_data` containing numerical values, likely representing features for a prediction model.\
+Creates a Pandas DataFrame `input_df` with `input_data`, labeling columns with weather-related feature names.\
+
+```
+input_df
+```
+Displays the `input_df` DataFrame, showing the weather-related input data in a structured table format.
+
+```
+
+
 
