@@ -363,3 +363,12 @@ df_downsampled["rainfall"].value_counts()
 **`["rainfall"]`** – Selects the "rainfall" column from the DataFrame.  
 **`.value_counts()`** – Counts the occurrences of each unique value in the "rainfall" column.  
 
+```
+X = df_downsampled.drop(columns=["rainfall"])
+y = df_downsampled["rainfall"]
+```
+
+**`df_downsampled`** – A Pandas DataFrame that contains the dataset.  
+**`drop(columns=["rainfall"])`** – Removes the "rainfall" column from `df_downsampled`, keeping only feature columns.  
+**`X = ...`** – Stores the remaining feature columns in `X` (independent variables).  
+**`y = df_downsampled["rainfall"]`** – Stores the "rainfall" column as `y` (dependent/target variable).  
