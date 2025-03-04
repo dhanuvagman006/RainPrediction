@@ -428,25 +428,6 @@ print("best parameters for Random Forest:", grid_search_rf.best_params_)
 `print("best parameters for Random Forest:", grid_search_rf.best_params_)` 
    - Prints the `best hyperparameter combination` found during the tuning process.  
 
-```
-cv_scores = cross_val_score(best_rf_model, X_train, y_train, cv=5)
-print("Cross-validation scores:", cv_scores)
-print("Mean cross-validation score:", np.mean(cv_scores)) 
-``` 
-
-`cross_val_score(best_rf_model, X_train, y_train, cv=5)`  
-   - Evaluates `best_rf_model` using `5-fold cross-validation`.  
-   - Splits `X_train, y_train` into 5 subsets (folds) and trains the model on 4 folds while testing on the remaining fold, repeating for all 5.  
-   - Returns an array of accuracy scores (one for each fold).  
-
-`cv_scores = ...`
-   - Stores the cross-validation scores as an array.  
-
-`print("Cross-validation scores:", cv_scores)` 
-   - Prints the individual cross-validation accuracy scores.  
-
-`np.mean(cv_scores)`
-   - Computes the `mean cross-validation score` (average model performance across all folds).  
 
 ```
 cv_scores = cross_val_score(best_rf_model, X_train, y_train, cv=5)
