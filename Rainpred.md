@@ -100,58 +100,50 @@ data["windspeed"] = data["windspeed"].fillna(data["windspeed"].median())
 ### checking the number of missing values
 
 
-```python
+```
 print(data.isnull().sum()) 
 ```
 prints the number of missing values in each coloum of the data set.
 
 
-```python
+```
 data["rainfall"].unique() 
+```
+The command `data["rainfall"].unique()` returns a list of all unique values in the `"rainfall"` column of a pandas DataFrame.
 
 ```
-retrives and display unique values in "rainfall"coloum.
-
-### converting the yes & no to 1 and 0 respectively
-
-```python
+# converting the yes & no to 1 and 0 respectively
 data["rainfall"] = data["rainfall"].map({"yes": 1, "no": 0})
  ```
- Converts the "rainfall" coloum from categorical values ("yes" and "No") to numerical value (1 and 0) for further anaylysis.
+This command replaces `"yes"` with `1` and `"no"` with `0` in the `"rainfall"` column of a pandas DataFrame using the `.map()` function.
 
-
-```python
+```
 data.head() 
 ```
-Displays the first few rows of the datasets.
+The command `data.head()` displays the first five rows of the pandas DataFrame `data`, helping to quickly inspect its structure and contents.
 
-
-```python
+```
 data.shape
 ```
- prints the shape(number of rows and coloums) of the dataset.
+The command `data.shape` returns a tuple `(rows, columns)`, showing the number of rows and columns in the pandas DataFrame `data`.
 
-### setting plot style for all the plots
-
-``` python
+```
+# setting plot style for all the plots
 sns.set(style="whitegrid")
 ```
- sets the visualization style for all plots.
+`sns.set("whitegrid")` sets a light gray grid style for Seaborn plots.
 
-
-```python
+```
 data.describe()
 ```
- provides statistical summary of the dataset,including mean,standard deviation,min,max,and quartiles.
+`data.describe()` provides summary statistics (count, mean, std, min, max, etc.) for numerical columns in a pandas DataFrame.
 
-
-```python
+```
 data.columns 
 ```
-list all coloumns in a dataset
+`data.columns` returns a list-like object containing the column names of the pandas DataFrame.
 
-
-```python
+```
 plt.figure(figsize=(15, 10))
 ```
  creates figure with a size of 15*10inches.
