@@ -407,55 +407,53 @@ print("best parameters for Random Forest:", grid_search_rf.best_params_)
 the best hyperparameters found for the Random Forest model are print
 
 
-Start from here Rish
 ```
 df_downsampled.head()
 ```
-**`df_downsampled`** – This is a Pandas DataFrame that has likely been downsampled (i.e., reduced in size by sampling or aggregation).
-**`.head()`** – This function returns the first five rows of the DataFrame by default.
+`df_downsampled`  This is a Pandas DataFrame that has likely been downsampled (i.e., reduced in size by sampling or aggregation).
+`.head()`This function returns the first five rows of the DataFrame by default.
 
 ```
 df_downsampled["rainfall"].value_counts()
 ```
 
-**`df_downsampled`** – A Pandas DataFrame that has been downsampled.  
-**`["rainfall"]`** – Selects the "rainfall" column from the DataFrame.  
-**`.value_counts()`** – Counts the occurrences of each unique value in the "rainfall" column.  
+`df_downsampled` A Pandas DataFrame that has been downsampled.  
+`["rainfall"]` Selects the "rainfall" column from the DataFrame.  
+`.value_counts()` Counts the occurrences of each unique value in the "rainfall" column.  
 
 ```
 X = df_downsampled.drop(columns=["rainfall"])
 y = df_downsampled["rainfall"]
 ```
 
-**`df_downsampled`** – A Pandas DataFrame that contains the dataset.  
-**`drop(columns=["rainfall"])`** – Removes the "rainfall" column from `df_downsampled`, keeping only feature columns.  
-**`X = ...`** – Stores the remaining feature columns in `X` (independent variables).  
-**`y = df_downsampled["rainfall"]`** – Stores the "rainfall" column as `y` (dependent/target variable).  
+`df_downsampled` A Pandas DataFrame that contains the dataset.  
+`drop(columns=["rainfall"])` Removes the "rainfall" column from `df_downsampled`, keeping only feature columns.  
+`X = ...` Stores the remaining feature columns in `X` (independent variables).  
+`y = df_downsampled["rainfall"]` Stores the "rainfall" column as `y` (dependent/target variable).  
 
 ```
 print(X)
 ```
 
-**`X`** – A DataFrame containing feature variables (independent variables) after removing the `"rainfall"` column.  
-**`print(X)`** – Displays the entire DataFrame `X` in the console.  
+`X` A DataFrame containing feature variables (independent variables) after removing the `"rainfall"` column.  
+`print(X)` Displays the entire DataFrame `X` in the console.  
 
 ```
 print(y)
 ```  
 
-**`y`** – A Pandas Series containing the `"rainfall"` column (dependent/target variable).  
-**`print(y)`** – Displays all values in `y` in the console.  
+`y`  A Pandas Series containing the `"rainfall"` column (dependent/target variable).  
+`print(y)` Displays all values in `y` in the console.  
 
 ```
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 ```
 
-
-**`train_test_split`** – A function from `sklearn.model_selection` used to split data.  
-**`X_train, X_test`** – `X_train` contains training feature data, and `X_test` contains testing feature data.  
-**`y_train, y_test`** – `y_train` contains training target data, and `y_test` contains testing target data.  
-**`test_size=0.2`** – 20% of the data is used for testing, and 80% for training.  
-**`random_state=42`** – Ensures reproducibility by setting a fixed random seed.  
+`train_test_split` A function from `sklearn.model_selection` used to split data.  
+`X_train, X_test` `X_train` contains training feature data, and `X_test` contains testing feature data.  
+`y_train, y_test` `y_train` contains training target data, and `y_test` contains testing target data.  
+`test_size=0.2` 20% of the data is used for testing, and 80% for training.  
+`random_state=42` Ensures reproducibility by setting a fixed random seed.  
 
 ```
 rf_model = RandomForestClassifier(random_state=42)
@@ -469,19 +467,19 @@ param_grid_rf = {
 }
 ```
 
-**`rf_model = RandomForestClassifier(random_state=42)`**  
-   - Creates a **Random Forest Classifier** instance.  
+`rf_model = RandomForestClassifier(random_state=42)`
+   - Creates a `Random Forest Classifier` instance.  
    - `random_state=42` ensures reproducibility.  
 
-**`param_grid_rf = {...}`**  
+`param_grid_rf = {...}` 
    - Defines a dictionary of hyperparameters for tuning the model.  
 
-**Hyperparameters in `param_grid_rf`**:  
-   - **`n_estimators`**: Number of trees in the forest (**50, 100, 200**).  
-   - **`max_features`**: Number of features considered for splitting (`"sqrt"` or `"log2"`).  
-   - **`max_depth`**: Maximum depth of trees (`None` means unlimited, or set to **10, 20, 30**).  
-   - **`min_samples_split`**: Minimum samples needed to split a node (**2, 5, 10**).  
-   - **`min_samples_leaf`**: Minimum samples required at a leaf node (**1, 2, 4**).  
+Hyperparameters in `param_grid_rf` 
+   - `n_estimators` Number of trees in the forest (**50, 100, 200**).  
+   - `max_features` Number of features considered for splitting (`"sqrt"` or `"log2"`).  
+   - `max_depth` Maximum depth of trees (`None` means unlimited, or set to **10, 20, 30**).  
+   - `min_samples_split` Minimum samples needed to split a node (**2, 5, 10**).  
+   - `min_samples_leaf` Minimum samples required at a leaf node (**1, 2, 4**).  
 
 ```
 grid_search_rf = GridSearchCV(estimator=rf_model, param_grid=param_grid_rf, cv=5, n_jobs=-1, verbose=2)
@@ -489,16 +487,16 @@ grid_search_rf = GridSearchCV(estimator=rf_model, param_grid=param_grid_rf, cv=5
 grid_search_rf.fit(X_train, y_train)
 ```
 
-**`GridSearchCV`** – A Scikit-learn function used to find the best hyperparameters for a model through exhaustive search.  
+`GridSearchCV` – A Scikit-learn function used to find the best hyperparameters for a model through exhaustive search.  
 
-**`grid_search_rf = GridSearchCV(...)`**  
-   - **`estimator=rf_model`** → Uses `rf_model` (Random Forest Classifier) as the base model.  
-   - **`param_grid=param_grid_rf`** → Tests different hyperparameter combinations from `param_grid_rf`.  
-   - **`cv=5`** → Uses **5-fold cross-validation** to evaluate each combination.  
-   - **`n_jobs=-1`** → Uses **all available CPU cores** for faster computation.  
-   - **`verbose=2`** → Prints progress updates during execution.  
+`grid_search_rf = GridSearchCV(...)`  
+   - `estimator=rf_model`  Uses `rf_model` (Random Forest Classifier) as the base model.  
+   - `param_grid=param_grid_rf` Tests different hyperparameter combinations from `param_grid_rf`.  
+   - `cv=5` Uses `5-fold cross-validation` to evaluate each combination.  
+   - `n_jobs=-1` Uses `all available CPU cores` for faster computation.  
+   - `verbose=2` Prints progress updates during execution.  
 
-**`grid_search_rf.fit(X_train, y_train)`**  
+`grid_search_rf.fit(X_train, y_train)`
    - Trains the model with different hyperparameter combinations.  
    - Selects the **best hyperparameter combination** based on cross-validation performance.  
 
@@ -508,12 +506,12 @@ best_rf_model = grid_search_rf.best_estimator_
 print("best parameters for Random Forest:", grid_search_rf.best_params_)
 ```
 
-**`best_rf_model = grid_search_rf.best_estimator_`**  
-   - Retrieves the **best model** from `grid_search_rf`.  
-   - The best model is trained using the optimal hyperparameters found by **GridSearchCV**.  
+`best_rf_model = grid_search_rf.best_estimator_`
+   - Retrieves the `best model` from `grid_search_rf`.  
+   - The best model is trained using the optimal hyperparameters found by `GridSearchCV`.  
 
-**`print("best parameters for Random Forest:", grid_search_rf.best_params_)`**  
-   - Prints the **best hyperparameter combination** found during the tuning process.  
+`print("best parameters for Random Forest:", grid_search_rf.best_params_)` 
+   - Prints the `best hyperparameter combination` found during the tuning process.  
 
 ```
 cv_scores = cross_val_score(best_rf_model, X_train, y_train, cv=5)
@@ -521,19 +519,19 @@ print("Cross-validation scores:", cv_scores)
 print("Mean cross-validation score:", np.mean(cv_scores)) 
 ``` 
 
-**`cross_val_score(best_rf_model, X_train, y_train, cv=5)`**  
-   - Evaluates `best_rf_model` using **5-fold cross-validation**.  
+`cross_val_score(best_rf_model, X_train, y_train, cv=5)`  
+   - Evaluates `best_rf_model` using `5-fold cross-validation`.  
    - Splits `X_train, y_train` into 5 subsets (folds) and trains the model on 4 folds while testing on the remaining fold, repeating for all 5.  
    - Returns an array of accuracy scores (one for each fold).  
 
-**`cv_scores = ...`**  
+`cv_scores = ...`
    - Stores the cross-validation scores as an array.  
 
-**`print("Cross-validation scores:", cv_scores)`**  
+`print("Cross-validation scores:", cv_scores)` 
    - Prints the individual cross-validation accuracy scores.  
 
-**`np.mean(cv_scores)`**  
-   - Computes the **mean cross-validation score** (average model performance across all folds).  
+`np.mean(cv_scores)`
+   - Computes the `mean cross-validation score` (average model performance across all folds).  
 
 
 <!-- line 44 to 57 code after this comment -->
