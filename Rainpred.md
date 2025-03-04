@@ -346,35 +346,6 @@ y = df_downsampled["rainfall"]
 `X = df_downsampled.drop(columns=["rainfall"])` creates a new DataFrame `X` by removing the `"rainfall"` column from `df_downsampled`, keeping only the feature variables for model training.\
 `y = df_downsampled["rainfall"]` extracts the `"rainfall"` column from `df_downsampled` as the target variable for model training.
 
-
-
-
-
-
-```
-df_downsampled.head()
-```
-`df_downsampled`  This is a Pandas DataFrame that has likely been downsampled (i.e., reduced in size by sampling or aggregation).
-`.head()`This function returns the first five rows of the DataFrame by default.
-
-```
-df_downsampled["rainfall"].value_counts()
-```
-
-`df_downsampled` A Pandas DataFrame that has been downsampled.  
-`["rainfall"]` Selects the "rainfall" column from the DataFrame.  
-`.value_counts()` Counts the occurrences of each unique value in the "rainfall" column.  
-
-```
-X = df_downsampled.drop(columns=["rainfall"])
-y = df_downsampled["rainfall"]
-```
-
-`df_downsampled` A Pandas DataFrame that contains the dataset.  
-`drop(columns=["rainfall"])` Removes the "rainfall" column from `df_downsampled`, keeping only feature columns.  
-`X = ...` Stores the remaining feature columns in `X` (independent variables).  
-`y = df_downsampled["rainfall"]` Stores the "rainfall" column as `y` (dependent/target variable).  
-
 ```
 print(X)
 ```
