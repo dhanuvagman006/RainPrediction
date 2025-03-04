@@ -24,7 +24,12 @@ def predict():
         input_df = pd.DataFrame([inputs], columns=feature_names)
         prediction = model.predict(input_df)[0]
         prediction_result = "Rainfall" if prediction == 1 else "No Rainfall"
-        return jsonify({"prediction": prediction_result})
+        score = (
+        (inputs[0] / 1100) * 20 +(inputs[1] / 30) * 10 +(inputs[2] / 100) * 15 +((100 - inputs[3]) / 100) * 15 +(inputs[4] / 12) * 20 +(inputs[5] / 50) * 10)
+    
+        prediction_score = round(min(100, max(0, score)), 2)
+
+        return jsonify({"prediction": prediction_result+" at "+str(prediction_score)+" Of Accuracy"})
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
