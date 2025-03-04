@@ -145,27 +145,22 @@ data.columns
 
 ```
 plt.figure(figsize=(15, 10))
-```
- creates figure with a size of 15*10inches.
-
-
-  ```python
-  for i, column in enumerate(['pressure', 'maxtemp', 'temparature', 'mintemp', 'dewpoint', 'humidity','cloud', 'sunshine', 'windspeed'], 1):
+for i, column in enumerate(['pressure', 'maxtemp', 'temparature', 'mintemp', 'dewpoint', 'humidity','cloud', 'sunshine', 'windspeed'], 1):
   plt.subplot(3, 3, i)
-  sns.histplot(data[column], kde=True)
-  plt.title(f"Distribution of {column}")
-  ```
-Iterates over selected weather  parameters and plot histogram with KDE (Kernel Density Estimation) for variable.
-  
- 
-```python
+  sns.boxplot(data[column])
+  plt.title(f"Boxplot of {column}")
 plt.tight_layout()
 plt.show()
 ```
- Adjusts the layout and displays the histogram plots.
+`plt.figure(figsize=(15, 10))` sets the plot size to 15x10 inches using Matplotlib.\
+This `for` loop iterates over the list of column names, assigning each column name to `column` and its index (starting from 1) to `i`. It is commonly used for plotting or processing multiple columns in a pandas DataFrame.\
+`plt.subplot(3, 3, i)` creates a grid of 3 rows and 3 columns for subplots and selects the `i`-th subplot to draw on.\
+`sns.boxplot(data[column])` creates a box plot for the specified column using Seaborn to visualize its distribution and detect outliers.\
+`plt.title(f"Boxplot of {column}")` sets the title of the current subplot, dynamically displaying the column name in the title.\
+`plt.tight_layout()` adjusts subplot spacing to prevent overlapping, ensuring a clean and readable layout.\
+`plt.show()` displays the plotted figure, making the visualizations visible.
 
-
-```python
+```
 plt.figure(figsize=(6, 4))
 sns.countplot(x="rainfall", data=data)
 plt.title("Distribution of Rainfall")
