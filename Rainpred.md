@@ -163,7 +163,7 @@ plt.figure(figsize=(15, 10))
   sns.histplot(data[column], kde=True)
   plt.title(f"Distribution of {column}")
   ```
-    Iterates over selected weather  parameters and plot histogram with KDE (Kernel Density Estimation) for variable.
+Iterates over selected weather  parameters and plot histogram with KDE (Kernel Density Estimation) for variable.
   
  
 ```python
