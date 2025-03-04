@@ -145,12 +145,22 @@ data.columns
 
 ```
 plt.figure(figsize=(15, 10))
+for i, column in enumerate(['pressure', 'maxtemp', 'temparature', 'mintemp', 'dewpoint', 'humidity','cloud', 'sunshine', 'windspeed'], 1):
+  plt.subplot(3, 3, i)
+  sns.histplot(data[column], kde=True)
+  plt.title(f"Distribution of {column}")
+
 plt.tight_layout()
 plt.show()
+
 ```
 `plt.figure(figsize=(15, 10))` sets the plot size to 15x10 inches using Matplotlib.\
+This `for` loop iterates through the list of column names, assigning each column name to `column` and its index (starting from 1) to `i`. It's typically used for plotting or analyzing multiple columns in a pandas DataFrame.\
+`plt.subplot(3, 3, i)` creates a grid of 3 rows and 3 columns for subplots and selects the `i`-th subplot for plotting.\
+`sns.histplot(data[column], kde=True)` creates a histogram for the specified column with a Kernel Density Estimate (KDE) curve to show the data distribution.\
+`plt.title(f"Distribution of {column}")` sets the title of the current subplot, dynamically displaying the column name.\
 `plt.tight_layout()` adjusts subplot spacing to prevent overlapping, ensuring a clean and readable layout.\
-`plt.show()` displays the plotted figure, making the visualizations visible.
+`plt.show()` displays the plotted histograms.
 
 ```
 plt.figure(figsize=(6, 4))
@@ -532,9 +542,6 @@ print("Mean cross-validation score:", np.mean(cv_scores))
 
 `np.mean(cv_scores)`
    - Computes the `mean cross-validation score` (average model performance across all folds).  
-
-
-<!-- line 44 to 57 code after this comment -->
 
 ```
 cv_scores = cross_val_score(best_rf_model, X_train, y_train, cv=5)
