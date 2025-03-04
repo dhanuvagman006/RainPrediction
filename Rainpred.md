@@ -346,59 +346,7 @@ y = df_downsampled["rainfall"]
 `X = df_downsampled.drop(columns=["rainfall"])` creates a new DataFrame `X` by removing the `"rainfall"` column from `df_downsampled`, keeping only the feature variables for model training.\
 `y = df_downsampled["rainfall"]` extracts the `"rainfall"` column from `df_downsampled` as the target variable for model training.
 
-```python
-print(X)  
-```
-`print(X)` displays the contents of the DataFrame `X`, which contains all columns from `df_downsampled` except `"rainfall"`. If `X` is large, only a portion will be shown in the output.
-```python
-print(y)  
-```
-`print(y)` displays the values of the target variable `"rainfall"`, which was extracted from `df_downsampled`. If `y` is large, only a portion will be shown in the output.
 
-```
-# splitting the data into training data and test data
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-```
-This command splits the dataset into training and testing sets:  
-
-- `X_train`, `y_train`: 80% of the data for training.  
-- `X_test`, `y_test`: 20% of the data for testing.  
-- `test_size=0.2`: 20% of the data is reserved for testing.  
-- `random_state=42`: Ensures reproducibility by fixing the random seed.  
-
-It uses `train_test_split` from `sklearn.model_selection`.
-
-```
-rf_model = RandomForestClassifier(random_state=42)
-
-param_grid_rf = {
-    "n_estimators": [50, 100, 200],
-    "max_features": ["sqrt", "log2"],
-    "max_depth": [None, 10, 20, 30],
-    "min_samples_split": [2, 5, 10],
-    "min_samples_leaf": [1, 2, 4]
-}
-```
-This command initializes a **Random Forest Classifier** named `rf_model` with a fixed `random_state=42` to ensure reproducibility. It uses the `RandomForestClassifier` from `sklearn.ensemble`.\
-This code defines `param_grid_rf`, a dictionary of hyperparameters for **Random Forest Classifier** tuning using grid search or randomized search.  \
-
-Parrameters
-
-- `"n_estimators"`: Number of trees in the forest (`50, 100, 200`).
-- `"max_features"`: Number of features to consider for splitting (`"sqrt"`, `"log2"`).
-- `"max_depth"`: Maximum depth of trees (`None` for unlimited, or `10, 20, 30`).
-- `"min_samples_split"`: Minimum samples required to split a node (`2, 5, 10`).
-- `"min_samples_leaf"`: Minimum samples required at a leaf node (`1, 2, 4`).  
-
-This grid is useful for hyperparameter tuning with **GridSearchCV** or **RandomizedSearchCV** from `sklearn.model_selection`.
-
-```
-# Hypertuning using GridSearchCV
-grid_search_rf = GridSearchCV(estimator=rf_model, param_grid=param_grid_rf, cv=5, n_jobs=-1, verbose=2)
-grid_search_rf.fit(X_train, y_train)
-```
-`grid_search_rf` tries different hyperparameter combinations for `rf_model` using 5-fold cross-validation to find the best settings.\
-`grid_search_rf.fit(X_train, y_train)` trains the model by testing different hyperparameter combinations on the training data to find the best one.
 
 
 
