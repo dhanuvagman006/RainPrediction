@@ -582,7 +582,7 @@ Creates a Pandas DataFrame `input_df` using `input_data`, assigning column names
 prediction = best_rf_model.predict(input_df)
 print("Prediction result:", "Rainfall" if prediction[0] == 1 else "No Rainfall")
 ```
-Uses `best_rf_model` to predict the outcome for `input_df` and stores the result in `prediction`.\  
+Uses `best_rf_model` to predict the outcome for `input_df` and stores the result in `prediction`. 
 Prints the predicted result, displaying **"Rainfall"** if `prediction[0] == 1`, otherwise **"No Rainfall"**.
 
 
