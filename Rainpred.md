@@ -145,6 +145,38 @@ data.columns
 
 ```
 plt.figure(figsize=(15, 10))
+plt.tight_layout()
+plt.show()
+```
+`plt.figure(figsize=(15, 10))` sets the plot size to 15x10 inches using Matplotlib.\
+`plt.tight_layout()` adjusts subplot spacing to prevent overlapping, ensuring a clean and readable layout.\
+`plt.show()` displays the plotted figure, making the visualizations visible.
+
+```
+plt.figure(figsize=(6, 4))
+sns.countplot(x="rainfall", data=data)
+plt.title("Distribution of Rainfall")
+plt.show()
+```
+`plt.figure(figsize=(6, 4))` sets the plot size to 6x4 inches using Matplotlib.\
+`sns.countplot(x="rainfall", data=data)` creates a bar plot showing the count of each unique value in the `"rainfall"` column using Seaborn.\
+`plt.title("Distribution of Rainfall")` sets the title of the plot to "Distribution of Rainfall".\
+`plt.show()` displays the plot, making it visible.
+
+```
+# correlation matrix
+plt.figure(figsize=(10, 8))
+sns.heatmap(data.corr(), annot=True, cmap="coolwarm", fmt=".2f")
+plt.title("Correlation heatmap")
+plt.show()
+```
+`plt.figure(figsize=(10, 8))` sets the plot size to 10x8 inches using Matplotlib.\
+`sns.heatmap(data.corr(), annot=True, cmap="coolwarm", fmt=".2f")` creates a heatmap showing the correlation between numerical columns in `data`, with values annotated and a "coolwarm" color scheme.\
+`plt.title("Correlation heatmap")` sets the title of the heatmap plot.\
+`plt.show()` displays the heatmap plot.
+
+```
+plt.figure(figsize=(15, 10))
 for i, column in enumerate(['pressure', 'maxtemp', 'temparature', 'mintemp', 'dewpoint', 'humidity','cloud', 'sunshine', 'windspeed'], 1):
   plt.subplot(3, 3, i)
   sns.boxplot(data[column])
@@ -159,21 +191,6 @@ This `for` loop iterates over the list of column names, assigning each column na
 `plt.title(f"Boxplot of {column}")` sets the title of the current subplot, dynamically displaying the column name in the title.\
 `plt.tight_layout()` adjusts subplot spacing to prevent overlapping, ensuring a clean and readable layout.\
 `plt.show()` displays the plotted figure, making the visualizations visible.
-
-```
-plt.figure(figsize=(6, 4))
-sns.countplot(x="rainfall", data=data)
-plt.title("Distribution of Rainfall")
-plt.show()
-```
- creates figure with size of 6*4inches, and displays a count plot distrubution of rainfall(1=Yes,0=No).
-
-### correlation matrix
-
-```python
-plt.figure(figsize=(10, 8)) 
-```
-creates  a figure with a size of 10*8 inches.
 
 
 ```python
