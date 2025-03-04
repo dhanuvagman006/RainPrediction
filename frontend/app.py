@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, jsonify, render_template
 import pickle
 import numpy as np
 import pandas as pd
@@ -12,19 +12,21 @@ with open(MODEL_PATH, 'rb') as file:
     model = model_data["model"]
     feature_names = model_data["feature_names"]
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET'])
 def home():
-    prediction_result = None
-    if request.method == 'POST':
-        try:
-            inputs = [float(request.form.get(feature, 0)) for feature in feature_names]
-            input_df = pd.DataFrame([inputs], columns=feature_names)
-            prediction = model.predict(input_df)[0]
-            prediction_result = "Rainfall" if prediction == 1 else "No Rainfall"
-        except Exception as e:
-            prediction_result = f"Error: {str(e)}"
-    
-    return render_template('index.html', prediction=prediction_result)
+    return render_template("index.html")  # Serve the frontend
+
+@app.route('/predict', methods=['POST'])  # Separate route for predictions
+def predict():
+    try:
+        data = request.get_json()
+        inputs = [float(data.get(feature, 0)) for feature in feature_names]
+        input_df = pd.DataFrame([inputs], columns=feature_names)
+        prediction = model.predict(input_df)[0]
+        prediction_result = "Rainfall" if prediction == 1 else "No Rainfall"
+        return jsonify({"prediction": prediction_result})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
 
 if __name__ == '__main__':
     app.run(debug=True)

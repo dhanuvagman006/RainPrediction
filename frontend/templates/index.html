@@ -1,33 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Prediction</title>
     <link rel="stylesheet" href="/static/style.css">
-<script src="/static/script.js"></script>
-
 </head>
-
 <body>
-    <h1>Weather Prediction Model</h1>
-    <form method="post">
-        <label>Pressure:</label> <input type="number" step="any" name="pressure" required><br>
-        <label>Dewpoint:</label> <input type="number" step="any" name="dewpoint" required><br>
-        <label>Humidity:</label> <input type="number" step="any" name="humidity" required><br>
-        <label>Cloud:</label> <input type="number" step="any" name="cloud" required><br>
-        <label>Sunshine:</label> <input type="number" step="any" name="sunshine" required><br>
-        <label>Wind Direction:</label> <input type="number" step="any" name="winddirection" required><br>
-        <label>Wind Speed:</label> <input type="number" step="any" name="windspeed" required><br>
-        <button type="submit">Predict</button>
-    </form>
-     <!-- Dont delete the below code -->
-      <!-- add id to the h2 tag and change its style -->
-    {% if prediction is not none %}
-        <h2>Prediction: {{ prediction }}</h2>
-    {% endif %}
-    <!-- Dont delete the above code -->
-</body>
+    <div class="rain-container"></div>
+    <div class="container">
+        <h1>Weather Prediction Model</h1>
+        <form id="weather-form">
+            <div class="input-grid">
+                <div class="input-group">
+                    <label for="pressure">Pressure:</label>
+                    <input type="number" step="any" id="pressure" name="pressure" required>
+                </div>
+                <div class="input-group">
+                    <label for="dewpoint">Dewpoint:</label>
+                    <input type="number" step="any" id="dewpoint" name="dewpoint" required>
+                </div>
+                <div class="input-group">
+                    <label for="humidity">Humidity:</label>
+                    <input type="number" step="any" id="humidity" name="humidity" required>
+                </div>
+                <div class="input-group">
+                    <label for="cloud">Cloud:</label>
+                    <input type="number" step="any" id="cloud" name="cloud" required>
+                </div>
+                <div class="input-group">
+                    <label for="sunshine">Sunshine:</label>
+                    <input type="number" step="any" id="sunshine" name="sunshine" required>
+                </div>
+                <div class="input-group">
+                    <label for="winddirection">Wind Direction:</label>
+                    <input type="number" step="any" id="winddirection" name="winddirection" required>
+                </div>
+                <div class="input-group">
+                    <label for="windspeed">Wind Speed:</label>
+                    <input type="number" step="any" id="windspeed" name="windspeed" required>
+                </div>
+            </div>
+            <div class="button-container">
+                <button type="submit">Predict Weather</button>
+            </div>
+        </form>
+        <div id="prediction-result"></div>
+<div id="loading" style="display: none;">Processing...</div>
 
+        <h2 id="prediction-result" class="hidden"></h2>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
 </html>
