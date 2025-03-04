@@ -198,124 +198,123 @@ This `for` loop iterates over the list of column names, assigning each column na
 data = data.drop(columns=['maxtemp', 'temparature', 'mintemp'])
 ```
 
-**`data`**: Refers to a pandas DataFrame that you're working with.
+`data` Refers to a pandas DataFrame that you're working with.
    
-**`drop()`**: A pandas method used to remove specific rows or columns from a DataFrame.
+`drop()` A pandas method used to remove specific rows or columns from a DataFrame.
 
-**`columns=['maxtemp', 'temparature', 'mintemp']`**: Specifies the names of the columns to be removed from the DataFrame. 
+`columns=['maxtemp', 'temparature', 'mintemp']`**: Specifies the names of the columns to be removed from the DataFrame. 
    - `maxtemp`: Likely the column for maximum temperature.
    - `temparature`: Appears to be a typo for `temperature`.
    - `mintemp`: Likely the column for minimum temperature.
-
-**`data =`**: The result of the `drop()` operation is reassigned back to `data`, so the DataFrame `data` is updated without the dropped columns.
+`data =`The result of the `drop()` operation is reassigned back to `data`, so the DataFrame `data` is updated without the dropped columns.
 
 
 ```
 data.head()
 ```
 
-**`data`**: Refers to the pandas DataFrame containing your data.
+`data` Refers to the pandas DataFrame containing your data.
    
-**`head()`**: A pandas method used to display the first 5 rows of the DataFrame by default.
+`head()` A pandas method used to display the first 5 rows of the DataFrame by default.
 
 ```
 print(data["rainfall"].value_counts())
 ```
 `print(data["rainfall"].value_counts())`:
 
-**`data`**: Refers to the pandas DataFrame containing your data.
+`data` Refers to the pandas DataFrame containing your data.
    
-**`["rainfall"]`**: This selects the column named `"rainfall"` from the DataFrame `data`.
+`["rainfall"]` This selects the column named `"rainfall"` from the DataFrame `data`.
 
-**`value_counts()`**: A pandas method that counts the unique values in the specified column (`rainfall` in this case) and returns the frequency of each unique value.
+`value_counts()`A pandas method that counts the unique values in the specified column (`rainfall` in this case) and returns the frequency of each unique value.
 
-**`print()`**: Displays the output of the `value_counts()` method, which shows the count of unique values in the "rainfall" column.
+`print()` Displays the output of the `value_counts()` method, which shows the count of unique values in the "rainfall" column.
 
 ```
 df_majority = data[data["rainfall"] == 1]
 df_minority = data[data["rainfall"] == 0]
 ```
 
-**`df_majority = data[data["rainfall"] == 1]`**:
-   - **`data["rainfall"] == 1`**: Filters the DataFrame to select rows where the `"rainfall"` column has a value of `1`.
-   - **`data[...]`**: The filtered rows are assigned to a new DataFrame `df_majority`, which contains only the rows with `rainfall` equal to `1`.
+`df_majority = data[data["rainfall"] == 1]`**:
+   - `data["rainfall"] == 1` Filters the DataFrame to select rows where the `"rainfall"` column has a value of `1`.
+   - `data[...]` The filtered rows are assigned to a new DataFrame `df_majority`, which contains only the rows with `rainfall` equal to `1`.
 
-**`df_minority = data[data["rainfall"] == 0]`**:
-   - **`data["rainfall"] == 0`**: Filters the DataFrame to select rows where the `"rainfall"` column has a value of `0`.
-   - **`data[...]`**: The filtered rows are assigned to a new DataFrame `df_minority`, which contains only the rows with `rainfall` equal to `0`.
+`df_minority = data[data["rainfall"] == 0]`
+   - `data["rainfall"] == 0` Filters the DataFrame to select rows where the `"rainfall"` column has a value of `0`.
+   - `data[...]` The filtered rows are assigned to a new DataFrame `df_minority`, which contains only the rows with `rainfall` equal to `0`.
 
 ```
 print(df_majority.shape)
 print(df_minority.shape)
 ```
 
-**`print(df_majority.shape)`**:
-   - **`df_majority.shape`**: The `.shape` attribute returns the dimensions of the `df_majority` DataFrame (number of rows and columns).
-   - **`print()`**: Displays the dimensions (rows, columns) of the `df_majority` DataFrame.
+`print(df_majority.shape)`
+   - `df_majority.shape` The `.shape` attribute returns the dimensions of the `df_majority` DataFrame (number of rows and columns).
+   - `print()` Displays the dimensions (rows, columns) of the `df_majority` DataFrame.
 
-**`print(df_minority.shape)`**:
-   - **`df_minority.shape`**: The `.shape` attribute returns the dimensions of the `df_minority` DataFrame (number of rows and columns).
-   - **`print()`**: Displays the dimensions (rows, columns) of the `df_minority` DataFrame.
+`print(df_minority.shape)`
+   - `df_minority.shape` The `.shape` attribute returns the dimensions of the `df_minority` DataFrame (number of rows and columns).
+   - `print()` Displays the dimensions (rows, columns) of the `df_minority` DataFrame.
    
    ```
 df_majority_downsampled = resample(df_majority, replace=False, n_samples=len(df_minority), random_state=42)
    ``` 
 
-**`resample()`**: A function from the `sklearn.utils` module used to resample (downsample or upsample) a DataFrame or array.
+`resample()`: A function from the `sklearn.utils` module used to resample (downsample or upsample) a DataFrame or array.
 
-**`df_majority`**: The DataFrame containing the majority class (rows where `"rainfall"` is 1). 
-**`replace=False`**: Ensures that sampling is done without replacement, meaning no row is selected more than once.
+`df_majority` The DataFrame containing the majority class (rows where `"rainfall"` is 1). 
+`replace=False` Ensures that sampling is done without replacement, meaning no row is selected more than once.
 
-**`n_samples=len(df_minority)`**: Specifies that the number of rows in the downsampled `df_majority` DataFrame should match the number of rows in the `df_minority` DataFrame (to balance the classes).
+`n_samples=len(df_minority)` Specifies that the number of rows in the downsampled `df_majority` DataFrame should match the number of rows in the `df_minority` DataFrame (to balance the classes).
 
-**`random_state=42`**: Sets a seed for the random number generator to ensure reproducibility of the sampling process.
+`random_state=42`Sets a seed for the random number generator to ensure reproducibility of the sampling process.
 
-**`df_majority_downsampled`**: The result of the downsampling operation, which contains a subset of rows from the majority class (`df_majority`) with the same number of rows as the minority class.
+`df_majority_downsampled` The result of the downsampling operation, which contains a subset of rows from the majority class (`df_majority`) with the same number of rows as the minority class.
 
 ``` 
  df_majority_downsampled.shape
 ```
 
-**`df_majority_downsampled`**: Refers to the DataFrame containing the downsampled majority class data (after using the `resample` function to match the size of the minority class).
+`df_majority_downsampled` Refers to the DataFrame containing the downsampled majority class data (after using the `resample` function to match the size of the minority class).
 
-**`.shape`**: This attribute returns the dimensions of the DataFrame, specifically the number of rows and columns.
+`.shape` This attribute returns the dimensions of the DataFrame, specifically the number of rows and columns.
 
 ``` 
 df_downsampled = pd.concat([df_majority_downsampled, df_minority])
 ```
-**`pd.concat([df_majority_downsampled, df_minority])`**:
-   - **`pd.concat()`**: A pandas function used to concatenate two or more pandas objects (Series or DataFrames) along a particular axis (rows or columns). citeturn0search0
-   - **`[df_majority_downsampled, df_minority]`**: A list containing the two DataFrames to be concatenated. In this case, `df_majority_downsampled` (the downsampled majority class) and `df_minority` (the minority class).
+`pd.concat([df_majority_downsampled, df_minority])`
+   -`pd.concat()` A pandas function used to concatenate two or more pandas objects (Series or DataFrames) along a particular axis (rows or columns). citeturn0search0
+   - `[df_majority_downsampled, df_minority]` A list containing the two DataFrames to be concatenated. In this case, `df_majority_downsampled` (the downsampled majority class) and `df_minority` (the minority class).
 
-**`df_downsampled =`**:
+`df_downsampled =`
    - Assigns the concatenated result to `df_downsampled`, creating a new DataFrame that combines the downsampled majority class and the minority class.
 
 ```
 df_downsampled.shape
 ```
-**`df_downsampled`**: This DataFrame is created by concatenating the downsampled majority class (`df_majority_downsampled`) and the minority class (`df_minority`), resulting in a balanced dataset.
+`df_downsampled` This DataFrame is created by concatenating the downsampled majority class (`df_majority_downsampled`) and the minority class (`df_minority`), resulting in a balanced dataset.
 
-**`.shape`**: This attribute provides the dimensions of the DataFrame:
+`.shape` This attribute provides the dimensions of the DataFrame:
    - The first value in the tuple indicates the total number of rows.
    - The second value indicates the total number of columns.
 
 ```
 df_downsampled.head()
 ```
- **`df_downsampled.head()`**:
-   - **`df_downsampled`**: Refers to the pandas DataFrame that combines the downsampled majority class and the minority class, resulting in a balanced dataset.
-   - **`.head()`**: A pandas method that returns the first 5 rows of the DataFrame by default. It's useful for quickly inspecting the initial entries of the dataset. citeturn0search0
+ `df_downsampled.head()`
+   - `df_downsampled` Refers to the pandas DataFrame that combines the downsampled majority class and the minority class, resulting in a balanced dataset.
+   - `.head()` A pandas method that returns the first 5 rows of the DataFrame by default. It's useful for quickly inspecting the initial entries of the dataset. citeturn0search0
 
 ```
 df_downsampled = df_downsampled.sample(frac=1, random_state=42).reset_index(drop=True)
 ```
- **`df_downsampled.sample(frac=1, random_state=42)`**:
-   - **`sample(frac=1)`**: Shuffles all rows in the DataFrame. Setting `frac=1` means returning all rows in random order. citeturn0search0
-   - **`random_state=42`**: Ensures reproducibility by initializing the random number generator to a fixed state.
+ `df_downsampled.sample(frac=1, random_state=42)`
+   - `sample(frac=1)` Shuffles all rows in the DataFrame. Setting `frac=1` means returning all rows in random order. citeturn0search0
+   - `random_state=42` Ensures reproducibility by initializing the random number generator to a fixed state.
 
- **`.reset_index(drop=True)`**:
-   - **`reset_index()`**: Resets the index of the DataFrame, assigning a new sequential index starting from 0.
-   - **`drop=True`**: Prevents the old index from being added as a new column in the DataFrame.
+ `.reset_index(drop=True)`
+   - `reset_index()`Resets the index of the DataFrame, assigning a new sequential index starting from 0.
+   - `drop=True` Prevents the old index from being added as a new column in the DataFrame.
 
 ### Display the count of unique values in the "rainfall" column of the df_downsampled DataFrame.
 
