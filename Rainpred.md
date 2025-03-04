@@ -192,40 +192,6 @@ This `for` loop iterates over the list of column names, assigning each column na
 `plt.tight_layout()` adjusts subplot spacing to prevent overlapping, ensuring a clean and readable layout.\
 `plt.show()` displays the plotted figure, making the visualizations visible.
 
-
-```python
-sns.heatmap(data.corr(), annot=True, cmap="coolwarm", fmt=".2f")
-plt.title("Correlation heatmap")
-plt.show()
-```
- Generates heatmap displaying correlation between weather parameters.
-
-
-```python
-plt.figure(figsize=(15, 10)) 
-```
-creates figure with size of 15*10 inches
-
-
-  
-  ```python
-  for i, column in enumerate(['pressure', 'maxtemp', 'temparature', 'mintemp', 'dewpoint', 'humidity','cloud', 'sunshine', 'windspeed'], 1):
-  plt.subplot(3, 3, i)
-  sns.boxplot(data[column])
-  plt.title(f"Boxplot of {column}") 
-  ```
-iterates over selected weather parameters and plots  boxplots to visualize the distribution and detect outliers.
-  
-
-```python
-plt.tight_layout()
-plt.show()  
-```
-adjusts the layout and display the boxplots.
-
-
-
-
 <!-- Rishana paste your code after this comment -->
 
 ```
