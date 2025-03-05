@@ -9,7 +9,7 @@
 <body>
     <div class="rain-container"></div>
     <div class="container">
-        <h1>Weather Prediction Model</h1>
+        <h1 id="h1">Weather Prediction Model Using ML</h1>
         <form id="weather-form">
             <div class="input-grid">
                 <div class="input-group">
@@ -46,10 +46,25 @@
             </div>
         </form>
         <div id="prediction-result"></div>
-<div id="loading" style="display: none;">Processing...</div>
+<div id="loading" style="display: none;">Predicting...</div>
 
         <h2 id="prediction-result" class="hidden"></h2>
     </div>
     <script src="/static/script.js"></script>
+    <script>
+        function createRain() {
+            const rainContainer = document.querySelector('.rain-container');
+            for (let i = 0; i < 100; i++) {
+                const drop = document.createElement('div');
+                drop.classList.add('rain-drop');
+                drop.style.left = `${Math.random() * 100}vw`;
+                drop.style.animationDuration = `${Math.random() * 2 + 1}s`;
+                drop.style.animationDelay = `${Math.random() * 2}s`;
+                rainContainer.appendChild(drop);
+            }
+        }
+        createRain();
+    </script>
+    
 </body>
 </html>

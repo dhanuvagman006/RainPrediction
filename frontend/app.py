@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 import numpy as np
 import pandas as pd
+import time
 
 app = Flask(__name__)
 
@@ -28,8 +29,8 @@ def predict():
         (inputs[0] / 1100) * 20 +(inputs[1] / 30) * 10 +(inputs[2] / 100) * 15 +((100 - inputs[3]) / 100) * 15 +(inputs[4] / 12) * 20 +(inputs[5] / 50) * 10)
     
         prediction_score = round(min(100, max(0, score)), 2)
-
-        return jsonify({"prediction": prediction_result+" at "+str(prediction_score)+" Of Accuracy"})
+        time.sleep(2)
+        return jsonify({"prediction": prediction_result,"accuracy":prediction_score})
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 

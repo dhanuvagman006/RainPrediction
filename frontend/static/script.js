@@ -24,15 +24,14 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             const data = await response.json();
-
-            // Clear loading indicator and display the prediction result
             loadingIndicator.style.display = "none";
             
             if (data.prediction) {
+                resultContainer.style.display="block";
                 resultContainer.innerHTML = `
-                    <div style="margin-top: 20px; padding: 10px; background: #f8f9fa; border-radius: 5px; text-align: center; font-size: 18px; font-weight: bold;">
-                        <span style="color: ${data.prediction === 'Rainfall' ? 'blue' : 'green'};">
-                            Prediction: ${data.prediction}
+                    <div style="margin-top: 20px; padding: 10px; border-radius: 5px; text-align: center; font-weight: bold;">
+                        <span style="color: ${data.prediction === 'Rainfall' ? '#ffd5ca' : '#55ff33'}">
+                            Prediction: ${data.prediction} at ${data.accuracy}% Of Accuracy. 
                         </span>
                     </div>
                 `;
