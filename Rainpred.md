@@ -100,127 +100,107 @@ data["windspeed"] = data["windspeed"].fillna(data["windspeed"].median())
 ### checking the number of missing values
 
 
-```python
+```
 print(data.isnull().sum()) 
 ```
 prints the number of missing values in each coloum of the data set.
 
 
-```python
+```
 data["rainfall"].unique() 
+```
+The command `data["rainfall"].unique()` returns a list of all unique values in the `"rainfall"` column of a pandas DataFrame.
 
 ```
-retrives and display unique values in "rainfall"coloum.
-
-### converting the yes & no to 1 and 0 respectively
-
-```python
+# converting the yes & no to 1 and 0 respectively
 data["rainfall"] = data["rainfall"].map({"yes": 1, "no": 0})
  ```
- Converts the "rainfall" coloum from categorical values ("yes" and "No") to numerical value (1 and 0) for further anaylysis.
+This command replaces `"yes"` with `1` and `"no"` with `0` in the `"rainfall"` column of a pandas DataFrame using the `.map()` function.
 
-
-```python
+```
 data.head() 
 ```
-Displays the first few rows of the datasets.
+The command `data.head()` displays the first five rows of the pandas DataFrame `data`, helping to quickly inspect its structure and contents.
 
-
-```python
+```
 data.shape
 ```
- prints the shape(number of rows and coloums) of the dataset.
+The command `data.shape` returns a tuple `(rows, columns)`, showing the number of rows and columns in the pandas DataFrame `data`.
 
-### setting plot style for all the plots
-
-``` python
+```
+# setting plot style for all the plots
 sns.set(style="whitegrid")
 ```
- sets the visualization style for all plots.
+`sns.set("whitegrid")` sets a light gray grid style for Seaborn plots.
 
-
-```python
+```
 data.describe()
 ```
- provides statistical summary of the dataset,including mean,standard deviation,min,max,and quartiles.
+`data.describe()` provides summary statistics (count, mean, std, min, max, etc.) for numerical columns in a pandas DataFrame.
 
-
-```python
+```
 data.columns 
 ```
-list all coloumns in a dataset
+`data.columns` returns a list-like object containing the column names of the pandas DataFrame.
 
-
-```python
-plt.figure(figsize=(15, 10))
 ```
- creates figure with a size of 15*10inches.
-
-
-  ```python
-  for i, column in enumerate(['pressure', 'maxtemp', 'temparature', 'mintemp', 'dewpoint', 'humidity','cloud', 'sunshine', 'windspeed'], 1):
+plt.figure(figsize=(15, 10))
+for i, column in enumerate(['pressure', 'maxtemp', 'temparature', 'mintemp', 'dewpoint', 'humidity','cloud', 'sunshine', 'windspeed'], 1):
   plt.subplot(3, 3, i)
   sns.histplot(data[column], kde=True)
   plt.title(f"Distribution of {column}")
-  ```
-    Iterates over selected weather  parameters and plot histogram with KDE (Kernel Density Estimation) for variable.
-  
- 
-```python
+
 plt.tight_layout()
 plt.show()
+
 ```
- Adjusts the layout and displays the histogram plots.
+`plt.figure(figsize=(15, 10))` sets the plot size to 15x10 inches using Matplotlib.\
+This `for` loop iterates through the list of column names, assigning each column name to `column` and its index (starting from 1) to `i`. It's typically used for plotting or analyzing multiple columns in a pandas DataFrame.\
+`plt.subplot(3, 3, i)` creates a grid of 3 rows and 3 columns for subplots and selects the `i`-th subplot for plotting.\
+`sns.histplot(data[column], kde=True)` creates a histogram for the specified column with a Kernel Density Estimate (KDE) curve to show the data distribution.\
+`plt.title(f"Distribution of {column}")` sets the title of the current subplot, dynamically displaying the column name.\
+`plt.tight_layout()` adjusts subplot spacing to prevent overlapping, ensuring a clean and readable layout.\
+`plt.show()` displays the plotted histograms.
 
-
-```python
+```
 plt.figure(figsize=(6, 4))
 sns.countplot(x="rainfall", data=data)
 plt.title("Distribution of Rainfall")
 plt.show()
 ```
- creates figure with size of 6*4inches, and displays a count plot distrubution of rainfall(1=Yes,0=No).
+`plt.figure(figsize=(6, 4))` sets the plot size to 6x4 inches using Matplotlib.\
+`sns.countplot(x="rainfall", data=data)` creates a bar plot showing the count of each unique value in the `"rainfall"` column using Seaborn.\
+`plt.title("Distribution of Rainfall")` sets the title of the plot to "Distribution of Rainfall".\
+`plt.show()` displays the plot, making it visible.
 
-### correlation matrix
-
-```python
-plt.figure(figsize=(10, 8)) 
 ```
-creates  a figure with a size of 10*8 inches.
-
-
-```python
+# correlation matrix
+plt.figure(figsize=(10, 8))
 sns.heatmap(data.corr(), annot=True, cmap="coolwarm", fmt=".2f")
 plt.title("Correlation heatmap")
 plt.show()
 ```
- Generates heatmap displaying correlation between weather parameters.
+`plt.figure(figsize=(10, 8))` sets the plot size to 10x8 inches using Matplotlib.\
+`sns.heatmap(data.corr(), annot=True, cmap="coolwarm", fmt=".2f")` creates a heatmap showing the correlation between numerical columns in `data`, with values annotated and a "coolwarm" color scheme.\
+`plt.title("Correlation heatmap")` sets the title of the heatmap plot.\
+`plt.show()` displays the heatmap plot.
 
-
-```python
-plt.figure(figsize=(15, 10)) 
 ```
-creates figure with size of 15*10 inches
-
-
-  
-  ```python
-  for i, column in enumerate(['pressure', 'maxtemp', 'temparature', 'mintemp', 'dewpoint', 'humidity','cloud', 'sunshine', 'windspeed'], 1):
+plt.figure(figsize=(15, 10))
+for i, column in enumerate(['pressure', 'maxtemp', 'temparature', 'mintemp', 'dewpoint', 'humidity','cloud', 'sunshine', 'windspeed'], 1):
   plt.subplot(3, 3, i)
   sns.boxplot(data[column])
-  plt.title(f"Boxplot of {column}") 
-  ```
-iterates over selected weather parameters and plots  boxplots to visualize the distribution and detect outliers.
-  
-
-```python
+  plt.title(f"Boxplot of {column}")
 plt.tight_layout()
-plt.show()  
+plt.show()
 ```
-adjusts the layout and display the boxplots.
-
-
-
+`plt.figure(figsize=(15, 10))` sets the plot size to 15x10 inches using Matplotlib.\
+This `for` loop iterates over the list of column names, assigning each column name to `column` and its index (starting from 1) to `i`. It is commonly used for plotting or processing multiple columns in a pandas DataFrame.\
+`plt.subplot(3, 3, i)` creates a grid of 3 rows and 3 columns for subplots and selects the `i`-th subplot to draw on.\
+`sns.boxplot(data[column])` creates a box plot for the specified column using Seaborn to visualize its distribution and detect outliers.\
+`plt.title(f"Boxplot of {column}")` sets the title of the current subplot, dynamically displaying the column name in the title.\
+`plt.tight_layout()` adjusts subplot spacing to prevent overlapping, ensuring a clean and readable layout.\
+`plt.show()` displays the plotted figure, making the visualizations visible.
 
 <!-- Rishana paste your code after this comment -->
 
@@ -228,175 +208,167 @@ adjusts the layout and display the boxplots.
 data = data.drop(columns=['maxtemp', 'temparature', 'mintemp'])
 ```
 
-**`data`**: Refers to a pandas DataFrame that you're working with.
+`data` Refers to a pandas DataFrame that you're working with.
    
-**`drop()`**: A pandas method used to remove specific rows or columns from a DataFrame.
+`drop()` A pandas method used to remove specific rows or columns from a DataFrame.
 
-**`columns=['maxtemp', 'temparature', 'mintemp']`**: Specifies the names of the columns to be removed from the DataFrame. 
+`columns=['maxtemp', 'temparature', 'mintemp']`**: Specifies the names of the columns to be removed from the DataFrame. 
    - `maxtemp`: Likely the column for maximum temperature.
    - `temparature`: Appears to be a typo for `temperature`.
    - `mintemp`: Likely the column for minimum temperature.
-
-**`data =`**: The result of the `drop()` operation is reassigned back to `data`, so the DataFrame `data` is updated without the dropped columns.
+`data =`The result of the `drop()` operation is reassigned back to `data`, so the DataFrame `data` is updated without the dropped columns.
 
 
 ```
 data.head()
 ```
 
-**`data`**: Refers to the pandas DataFrame containing your data.
+`data` Refers to the pandas DataFrame containing your data.
    
-**`head()`**: A pandas method used to display the first 5 rows of the DataFrame by default.
+`head()` A pandas method used to display the first 5 rows of the DataFrame by default.
 
 ```
 print(data["rainfall"].value_counts())
 ```
 `print(data["rainfall"].value_counts())`:
 
-**`data`**: Refers to the pandas DataFrame containing your data.
+`data` Refers to the pandas DataFrame containing your data.
    
-**`["rainfall"]`**: This selects the column named `"rainfall"` from the DataFrame `data`.
+`["rainfall"]` This selects the column named `"rainfall"` from the DataFrame `data`.
 
-**`value_counts()`**: A pandas method that counts the unique values in the specified column (`rainfall` in this case) and returns the frequency of each unique value.
+`value_counts()`A pandas method that counts the unique values in the specified column (`rainfall` in this case) and returns the frequency of each unique value.
 
-**`print()`**: Displays the output of the `value_counts()` method, which shows the count of unique values in the "rainfall" column.
+`print()` Displays the output of the `value_counts()` method, which shows the count of unique values in the "rainfall" column.
 
 ```
 df_majority = data[data["rainfall"] == 1]
 df_minority = data[data["rainfall"] == 0]
 ```
 
-**`df_majority = data[data["rainfall"] == 1]`**:
-   - **`data["rainfall"] == 1`**: Filters the DataFrame to select rows where the `"rainfall"` column has a value of `1`.
-   - **`data[...]`**: The filtered rows are assigned to a new DataFrame `df_majority`, which contains only the rows with `rainfall` equal to `1`.
+`df_majority = data[data["rainfall"] == 1]`**:
+   - `data["rainfall"] == 1` Filters the DataFrame to select rows where the `"rainfall"` column has a value of `1`.
+   - `data[...]` The filtered rows are assigned to a new DataFrame `df_majority`, which contains only the rows with `rainfall` equal to `1`.
 
-**`df_minority = data[data["rainfall"] == 0]`**:
-   - **`data["rainfall"] == 0`**: Filters the DataFrame to select rows where the `"rainfall"` column has a value of `0`.
-   - **`data[...]`**: The filtered rows are assigned to a new DataFrame `df_minority`, which contains only the rows with `rainfall` equal to `0`.
+`df_minority = data[data["rainfall"] == 0]`
+   - `data["rainfall"] == 0` Filters the DataFrame to select rows where the `"rainfall"` column has a value of `0`.
+   - `data[...]` The filtered rows are assigned to a new DataFrame `df_minority`, which contains only the rows with `rainfall` equal to `0`.
 
 ```
 print(df_majority.shape)
 print(df_minority.shape)
 ```
 
-**`print(df_majority.shape)`**:
-   - **`df_majority.shape`**: The `.shape` attribute returns the dimensions of the `df_majority` DataFrame (number of rows and columns).
-   - **`print()`**: Displays the dimensions (rows, columns) of the `df_majority` DataFrame.
+`print(df_majority.shape)`
+   - `df_majority.shape` The `.shape` attribute returns the dimensions of the `df_majority` DataFrame (number of rows and columns).
+   - `print()` Displays the dimensions (rows, columns) of the `df_majority` DataFrame.
 
-**`print(df_minority.shape)`**:
-   - **`df_minority.shape`**: The `.shape` attribute returns the dimensions of the `df_minority` DataFrame (number of rows and columns).
-   - **`print()`**: Displays the dimensions (rows, columns) of the `df_minority` DataFrame.
+`print(df_minority.shape)`
+   - `df_minority.shape` The `.shape` attribute returns the dimensions of the `df_minority` DataFrame (number of rows and columns).
+   - `print()` Displays the dimensions (rows, columns) of the `df_minority` DataFrame.
    
    ```
 df_majority_downsampled = resample(df_majority, replace=False, n_samples=len(df_minority), random_state=42)
    ``` 
 
-**`resample()`**: A function from the `sklearn.utils` module used to resample (downsample or upsample) a DataFrame or array.
+`resample()`: A function from the `sklearn.utils` module used to resample (downsample or upsample) a DataFrame or array.
 
-**`df_majority`**: The DataFrame containing the majority class (rows where `"rainfall"` is 1). 
-**`replace=False`**: Ensures that sampling is done without replacement, meaning no row is selected more than once.
+`df_majority` The DataFrame containing the majority class (rows where `"rainfall"` is 1). 
+`replace=False` Ensures that sampling is done without replacement, meaning no row is selected more than once.
 
-**`n_samples=len(df_minority)`**: Specifies that the number of rows in the downsampled `df_majority` DataFrame should match the number of rows in the `df_minority` DataFrame (to balance the classes).
+`n_samples=len(df_minority)` Specifies that the number of rows in the downsampled `df_majority` DataFrame should match the number of rows in the `df_minority` DataFrame (to balance the classes).
 
-**`random_state=42`**: Sets a seed for the random number generator to ensure reproducibility of the sampling process.
+`random_state=42`Sets a seed for the random number generator to ensure reproducibility of the sampling process.
 
-**`df_majority_downsampled`**: The result of the downsampling operation, which contains a subset of rows from the majority class (`df_majority`) with the same number of rows as the minority class.
+`df_majority_downsampled` The result of the downsampling operation, which contains a subset of rows from the majority class (`df_majority`) with the same number of rows as the minority class.
 
 ``` 
  df_majority_downsampled.shape
 ```
 
-**`df_majority_downsampled`**: Refers to the DataFrame containing the downsampled majority class data (after using the `resample` function to match the size of the minority class).
+`df_majority_downsampled` Refers to the DataFrame containing the downsampled majority class data (after using the `resample` function to match the size of the minority class).
 
-**`.shape`**: This attribute returns the dimensions of the DataFrame, specifically the number of rows and columns.
+`.shape` This attribute returns the dimensions of the DataFrame, specifically the number of rows and columns.
 
 ``` 
 df_downsampled = pd.concat([df_majority_downsampled, df_minority])
 ```
-**`pd.concat([df_majority_downsampled, df_minority])`**:
-   - **`pd.concat()`**: A pandas function used to concatenate two or more pandas objects (Series or DataFrames) along a particular axis (rows or columns). citeturn0search0
-   - **`[df_majority_downsampled, df_minority]`**: A list containing the two DataFrames to be concatenated. In this case, `df_majority_downsampled` (the downsampled majority class) and `df_minority` (the minority class).
+`pd.concat([df_majority_downsampled, df_minority])`
+   -`pd.concat()` A pandas function used to concatenate two or more pandas objects (Series or DataFrames) along a particular axis (rows or columns). citeturn0search0
+   - `[df_majority_downsampled, df_minority]` A list containing the two DataFrames to be concatenated. In this case, `df_majority_downsampled` (the downsampled majority class) and `df_minority` (the minority class).
 
-**`df_downsampled =`**:
+`df_downsampled =`
    - Assigns the concatenated result to `df_downsampled`, creating a new DataFrame that combines the downsampled majority class and the minority class.
 
 ```
 df_downsampled.shape
 ```
-**`df_downsampled`**: This DataFrame is created by concatenating the downsampled majority class (`df_majority_downsampled`) and the minority class (`df_minority`), resulting in a balanced dataset.
+`df_downsampled` This DataFrame is created by concatenating the downsampled majority class (`df_majority_downsampled`) and the minority class (`df_minority`), resulting in a balanced dataset.
 
-**`.shape`**: This attribute provides the dimensions of the DataFrame:
+`.shape` This attribute provides the dimensions of the DataFrame:
    - The first value in the tuple indicates the total number of rows.
    - The second value indicates the total number of columns.
 
 ```
 df_downsampled.head()
 ```
- **`df_downsampled.head()`**:
-   - **`df_downsampled`**: Refers to the pandas DataFrame that combines the downsampled majority class and the minority class, resulting in a balanced dataset.
-   - **`.head()`**: A pandas method that returns the first 5 rows of the DataFrame by default. It's useful for quickly inspecting the initial entries of the dataset. citeturn0search0
+ `df_downsampled.head()`
+   - `df_downsampled` Refers to the pandas DataFrame that combines the downsampled majority class and the minority class, resulting in a balanced dataset.
+   - `.head()` A pandas method that returns the first 5 rows of the DataFrame by default. It's useful for quickly inspecting the initial entries of the dataset. citeturn0search0
 
 ```
 df_downsampled = df_downsampled.sample(frac=1, random_state=42).reset_index(drop=True)
 ```
- **`df_downsampled.sample(frac=1, random_state=42)`**:
-   - **`sample(frac=1)`**: Shuffles all rows in the DataFrame. Setting `frac=1` means returning all rows in random order. citeturn0search0
-   - **`random_state=42`**: Ensures reproducibility by initializing the random number generator to a fixed state.
+ `df_downsampled.sample(frac=1, random_state=42)`
+   - `sample(frac=1)` Shuffles all rows in the DataFrame. Setting `frac=1` means returning all rows in random order. citeturn0search0
+   - `random_state=42` Ensures reproducibility by initializing the random number generator to a fixed state.
 
- **`.reset_index(drop=True)`**:
-   - **`reset_index()`**: Resets the index of the DataFrame, assigning a new sequential index starting from 0.
-   - **`drop=True`**: Prevents the old index from being added as a new column in the DataFrame.
+ `.reset_index(drop=True)`
+   - `reset_index()`Resets the index of the DataFrame, assigning a new sequential index starting from 0.
+   - `drop=True` Prevents the old index from being added as a new column in the DataFrame.
 
-<!-- Rakshitha paste your code after this comment -->
-Start from here Rish
-```
+
+
+```python
 df_downsampled.head()
-```
-**`df_downsampled`** – This is a Pandas DataFrame that has likely been downsampled (i.e., reduced in size by sampling or aggregation).
-**`.head()`** – This function returns the first five rows of the DataFrame by default.
+``` 
+`df_downsampled.head()` displays the first five rows of the pandas DataFrame `df_downsampled`, allowing for a quick inspection of its contents. 
 
 ```
 df_downsampled["rainfall"].value_counts()
 ```
-
-**`df_downsampled`** – A Pandas DataFrame that has been downsampled.  
-**`["rainfall"]`** – Selects the "rainfall" column from the DataFrame.  
-**`.value_counts()`** – Counts the occurrences of each unique value in the "rainfall" column.  
+`df_downsampled["rainfall"].value_counts()` counts the occurrences of each unique value in the `"rainfall"` column and returns the results in descending order.
 
 ```
+# split features and target as X and y
 X = df_downsampled.drop(columns=["rainfall"])
 y = df_downsampled["rainfall"]
 ```
-
-**`df_downsampled`** – A Pandas DataFrame that contains the dataset.  
-**`drop(columns=["rainfall"])`** – Removes the "rainfall" column from `df_downsampled`, keeping only feature columns.  
-**`X = ...`** – Stores the remaining feature columns in `X` (independent variables).  
-**`y = df_downsampled["rainfall"]`** – Stores the "rainfall" column as `y` (dependent/target variable).  
+`X = df_downsampled.drop(columns=["rainfall"])` creates a new DataFrame `X` by removing the `"rainfall"` column from `df_downsampled`, keeping only the feature variables for model training.\
+`y = df_downsampled["rainfall"]` extracts the `"rainfall"` column from `df_downsampled` as the target variable for model training.
 
 ```
 print(X)
 ```
 
-**`X`** – A DataFrame containing feature variables (independent variables) after removing the `"rainfall"` column.  
-**`print(X)`** – Displays the entire DataFrame `X` in the console.  
+`X` A DataFrame containing feature variables (independent variables) after removing the `"rainfall"` column.  
+`print(X)` Displays the entire DataFrame `X` in the console.  
 
 ```
 print(y)
 ```  
 
-**`y`** – A Pandas Series containing the `"rainfall"` column (dependent/target variable).  
-**`print(y)`** – Displays all values in `y` in the console.  
+`y`  A Pandas Series containing the `"rainfall"` column (dependent/target variable).  
+`print(y)` Displays all values in `y` in the console.  
 
 ```
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 ```
 
-
-**`train_test_split`** – A function from `sklearn.model_selection` used to split data.  
-**`X_train, X_test`** – `X_train` contains training feature data, and `X_test` contains testing feature data.  
-**`y_train, y_test`** – `y_train` contains training target data, and `y_test` contains testing target data.  
-**`test_size=0.2`** – 20% of the data is used for testing, and 80% for training.  
-**`random_state=42`** – Ensures reproducibility by setting a fixed random seed.  
+`train_test_split` A function from `sklearn.model_selection` used to split data.  
+`X_train, X_test` `X_train` contains training feature data, and `X_test` contains testing feature data.  
+`y_train, y_test` `y_train` contains training target data, and `y_test` contains testing target data.  
+`test_size=0.2` 20% of the data is used for testing, and 80% for training.  
+`random_state=42` Ensures reproducibility by setting a fixed random seed.  
 
 ```
 rf_model = RandomForestClassifier(random_state=42)
@@ -410,19 +382,19 @@ param_grid_rf = {
 }
 ```
 
-**`rf_model = RandomForestClassifier(random_state=42)`**  
-   - Creates a **Random Forest Classifier** instance.  
+`rf_model = RandomForestClassifier(random_state=42)`
+   - Creates a `Random Forest Classifier` instance.  
    - `random_state=42` ensures reproducibility.  
 
-**`param_grid_rf = {...}`**  
+`param_grid_rf = {...}` 
    - Defines a dictionary of hyperparameters for tuning the model.  
 
-**Hyperparameters in `param_grid_rf`**:  
-   - **`n_estimators`**: Number of trees in the forest (**50, 100, 200**).  
-   - **`max_features`**: Number of features considered for splitting (`"sqrt"` or `"log2"`).  
-   - **`max_depth`**: Maximum depth of trees (`None` means unlimited, or set to **10, 20, 30**).  
-   - **`min_samples_split`**: Minimum samples needed to split a node (**2, 5, 10**).  
-   - **`min_samples_leaf`**: Minimum samples required at a leaf node (**1, 2, 4**).  
+Hyperparameters in `param_grid_rf` 
+   - `n_estimators` Number of trees in the forest (**50, 100, 200**).  
+   - `max_features` Number of features considered for splitting (`"sqrt"` or `"log2"`).  
+   - `max_depth` Maximum depth of trees (`None` means unlimited, or set to **10, 20, 30**).  
+   - `min_samples_split` Minimum samples needed to split a node (**2, 5, 10**).  
+   - `min_samples_leaf` Minimum samples required at a leaf node (**1, 2, 4**).  
 
 ```
 grid_search_rf = GridSearchCV(estimator=rf_model, param_grid=param_grid_rf, cv=5, n_jobs=-1, verbose=2)
@@ -430,16 +402,16 @@ grid_search_rf = GridSearchCV(estimator=rf_model, param_grid=param_grid_rf, cv=5
 grid_search_rf.fit(X_train, y_train)
 ```
 
-**`GridSearchCV`** – A Scikit-learn function used to find the best hyperparameters for a model through exhaustive search.  
+`GridSearchCV` – A Scikit-learn function used to find the best hyperparameters for a model through exhaustive search.  
 
-**`grid_search_rf = GridSearchCV(...)`**  
-   - **`estimator=rf_model`** → Uses `rf_model` (Random Forest Classifier) as the base model.  
-   - **`param_grid=param_grid_rf`** → Tests different hyperparameter combinations from `param_grid_rf`.  
-   - **`cv=5`** → Uses **5-fold cross-validation** to evaluate each combination.  
-   - **`n_jobs=-1`** → Uses **all available CPU cores** for faster computation.  
-   - **`verbose=2`** → Prints progress updates during execution.  
+`grid_search_rf = GridSearchCV(...)`  
+   - `estimator=rf_model`  Uses `rf_model` (Random Forest Classifier) as the base model.  
+   - `param_grid=param_grid_rf` Tests different hyperparameter combinations from `param_grid_rf`.  
+   - `cv=5` Uses `5-fold cross-validation` to evaluate each combination.  
+   - `n_jobs=-1` Uses `all available CPU cores` for faster computation.  
+   - `verbose=2` Prints progress updates during execution.  
 
-**`grid_search_rf.fit(X_train, y_train)`**  
+`grid_search_rf.fit(X_train, y_train)`
    - Trains the model with different hyperparameter combinations.  
    - Selects the **best hyperparameter combination** based on cross-validation performance.  
 
@@ -449,35 +421,13 @@ best_rf_model = grid_search_rf.best_estimator_
 print("best parameters for Random Forest:", grid_search_rf.best_params_)
 ```
 
-**`best_rf_model = grid_search_rf.best_estimator_`**  
-   - Retrieves the **best model** from `grid_search_rf`.  
-   - The best model is trained using the optimal hyperparameters found by **GridSearchCV**.  
+`best_rf_model = grid_search_rf.best_estimator_`
+   - Retrieves the `best model` from `grid_search_rf`.  
+   - The best model is trained using the optimal hyperparameters found by `GridSearchCV`.  
 
-**`print("best parameters for Random Forest:", grid_search_rf.best_params_)`**  
-   - Prints the **best hyperparameter combination** found during the tuning process.  
+`print("best parameters for Random Forest:", grid_search_rf.best_params_)` 
+   - Prints the `best hyperparameter combination` found during the tuning process.  
 
-```
-cv_scores = cross_val_score(best_rf_model, X_train, y_train, cv=5)
-print("Cross-validation scores:", cv_scores)
-print("Mean cross-validation score:", np.mean(cv_scores)) 
-``` 
-
-**`cross_val_score(best_rf_model, X_train, y_train, cv=5)`**  
-   - Evaluates `best_rf_model` using **5-fold cross-validation**.  
-   - Splits `X_train, y_train` into 5 subsets (folds) and trains the model on 4 folds while testing on the remaining fold, repeating for all 5.  
-   - Returns an array of accuracy scores (one for each fold).  
-
-**`cv_scores = ...`**  
-   - Stores the cross-validation scores as an array.  
-
-**`print("Cross-validation scores:", cv_scores)`**  
-   - Prints the individual cross-validation accuracy scores.  
-
-**`np.mean(cv_scores)`**  
-   - Computes the **mean cross-validation score** (average model performance across all folds).  
-
-
-<!-- line 44 to 57 code after this comment -->
 
 ```
 cv_scores = cross_val_score(best_rf_model, X_train, y_train, cv=5)
